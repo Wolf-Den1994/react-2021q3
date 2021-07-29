@@ -4,25 +4,20 @@
     "es2021": true
   },
   "extends": [
-    "airbnb-typescript/base",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb",
+    "eslint:recommended"
   ],
-  "parser": "@typescript-eslint/parser",
+  "plugins": ["react"],
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
     "no-plusplus": "off",
     "no-console": "warn",
     "max-len": ["warn", { "code": 120 }],
     "indent": ["warn", 2, {
-      "SwitchCase": 1
-    }],
-    "@typescript-eslint/indent": ["warn", 2, {
       "SwitchCase": 1
     }],
     "import/prefer-default-export": "off",
