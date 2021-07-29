@@ -17,13 +17,13 @@ const devServer = (isDev) =>
       };
 
 const esLintPlugin = (isDev) =>
-  isDev ? [] : [new ESLintPlugin({ extensions: ['ts', 'js'] })];
+  isDev ? [] : [new ESLintPlugin({ extensions: ['js', 'jsx'] })];
 
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: development ? 'inline-source-map' : false,
   entry: {
-    main: './src/index.js',
+    main: './src/index.jsx',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -65,7 +65,7 @@ module.exports = ({ development }) => ({
     ],
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({

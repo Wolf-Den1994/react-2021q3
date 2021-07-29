@@ -5,17 +5,24 @@
   },
   "extends": [
     "airbnb",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
-  "plugins": ["react"],
+  "plugins": ["react", "react-hooks"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     }
   },
   "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
     "no-plusplus": "off",
     "no-console": "warn",
+    "no-multiple-empty-lines": "warn",
     "max-len": ["warn", { "code": 120 }],
     "indent": ["warn", 2, {
       "SwitchCase": 1
