@@ -1,4 +1,5 @@
-import {test} from './test'
+import './styles.scss'
 
-test()
-console.log('hello world')
+// import img from './assets/cat.jpg'
+// document.querySelector('#root').innerHTML += `<img src="${img}" alt="image">`;
+
