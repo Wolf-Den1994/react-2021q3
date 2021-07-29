@@ -33,12 +33,16 @@ module.exports = ({ development }) => ({
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', ['babel-preset-minify']],
+            presets: [
+              '@babel/preset-env',
+              ['babel-preset-minify'],
+              '@babel/react',
+            ],
           },
         },
       },
