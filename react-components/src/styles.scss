@@ -1,7 +1,9 @@
-$color: darkblue;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  background-color: $color;
-  background-image: url('./assets/cat.jpg');
-  background-repeat: no-repeat;
+  background-color: #cacaca;
 }
