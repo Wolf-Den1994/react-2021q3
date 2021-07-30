@@ -10,12 +10,13 @@
 
 .search-input {
   padding: 3px 10px;
-  min-width: 200px;
-  min-height: 27px;
+  width: 250px;
+  min-height: 42px;
   border: 2px solid #298aff;
   border-radius: 40px;
   outline: none;
   background-color: #cacaca;
+  font-size: 24px;
 
   &::placeholder {
     color: #490599;
@@ -24,8 +25,8 @@
 
 .search-btn {
   display: inline-block;
-  width: 35px;
-  height: 35px;
+  width: 55px;
+  height: 55px;
   border: 2px solid #298aff;
   border-radius: 50%;
   background-color: transparent;

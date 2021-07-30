@@ -7,6 +7,7 @@
     "build": "webpack",
     "dev": "webpack serve --env development",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lintfix": "npm run lint -- --fix",
     "prettier": "prettier --write \"src/**/*.{js,jsx,scss,css,json}\""
   },
   "author": "Denis Karazan",
