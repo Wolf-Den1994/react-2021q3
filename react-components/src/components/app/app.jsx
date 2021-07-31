@@ -1,9 +1,10 @@
 import React from 'react';
+import Form from '../form/form';
 import './app.scss';
 
 const App = () => (
   <>
-    <h1>hello</h1>
+    <Form />
   </>
 );
 
