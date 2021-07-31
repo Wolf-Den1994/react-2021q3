@@ -3,6 +3,7 @@
   display: inline-block;
   width: 48px;
   height: 20px;
+  cursor: pointer;
 
   input {
     display: none;
@@ -75,6 +76,11 @@ input:checked + .slider.gender:after {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+  }
 
   .display {
     color: #444;

@@ -6,21 +6,55 @@ import Dropdown from '../dropdown/dropdown';
 import InputText from '../input/input';
 import './form.scss';
 
-const Form = ({ countriesArray }) => (
-  <form action="POST" className="user-form">
-    <InputText type="text" placeholder="Name" />
-    <InputText type="text" placeholder="Surname" />
-    <Checkbox classNameLabel="switch" classNameSpan="slider gender" display="Gender" />
-    <DateInput type="date" />
-    <Dropdown countries={countriesArray} />
-    <InputText type="number" placeholder="Zip-code" />
+const Form = ({
+  countriesArray,
+  onChangeName,
+  onChangeSurname,
+  onChangeZipcode,
+  onChangeGender,
+  onChangeNotifications,
+  onChangeTreatment,
+  onClickBtn,
+  onChangeDate,
+  onChangeCountry,
+}) => (
+  <form action="POST" className="user-form" onSubmit={onClickBtn}>
+    <InputText
+      type="text"
+      placeholder="Name"
+      onChangeHandler={onChangeName}
+    />
+    <InputText
+      type="text"
+      placeholder="Surname"
+      onChangeHandler={onChangeSurname}
+    />
+    <Checkbox
+      classNameLabel="switch"
+      classNameSpan="slider gender"
+      display="Gender"
+      onChangeHandler={onChangeGender}
+    />
+    <DateInput type="text" onChangeHandler={onChangeDate} />
+    <Dropdown countries={countriesArray} onChangeHandler={onChangeCountry} />
+    <InputText
+      type="number"
+      placeholder="Zip-code"
+      onChangeHandler={onChangeZipcode}
+    />
+    <Checkbox
+      classNameLabel="switch"
+      classNameSpan="slider"
+      display="Notifications"
+      onChangeHandler={onChangeNotifications}
+    />
     <Checkbox
       value="treatment"
       display="Processing of personal data"
       classNameLabel="checkbox-label"
       classNameSpan="hide"
+      onChangeHandler={onChangeTreatment}
     />
-    <Checkbox classNameLabel="switch" classNameSpan="slider" display="Notifications" />
     <Button />
   </form>
 );
