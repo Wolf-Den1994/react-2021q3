@@ -1,0 +1,17 @@
+.user-form {
+  padding: 14px;
+  margin: 10px 0 30px 0;
+  max-width: 300px;
+  width: 100%;
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  border: 2px solid #9e1da2;
+  border-radius: 14px;
+  box-shadow: 4px 7px 25px #e787ff;
+  background-color: #ece2ec;
+}

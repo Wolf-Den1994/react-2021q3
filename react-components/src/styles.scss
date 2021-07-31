@@ -6,4 +6,10 @@
 
 body {
   background-color: #cacaca;
+  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", "Arial", sans-serif;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
 }

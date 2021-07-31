@@ -1,0 +1,12 @@
+.input {
+  padding: 0 10px;
+  width: 200px;
+  height: 20px;
+  font-size: 15px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

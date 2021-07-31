@@ -2,9 +2,9 @@ import React from 'react';
 import Form from '../form/form';
 import './app.scss';
 
-const App = () => (
+const App = ({ countries }) => (
   <>
-    <Form />
+    <Form countriesArray={countries} />
   </>
 );
 

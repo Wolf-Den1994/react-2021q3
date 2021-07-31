@@ -1,0 +1,25 @@
+const countriesArray = [
+  'USA',
+  'Japan',
+  'Russia',
+  'Great Britain',
+  'China',
+  'Australia',
+  'Canada',
+  'Brazil',
+  'Belarus',
+  'Poland',
+  'Germany',
+  'India',
+  'Greenland',
+  'France',
+  'Italy',
+  'South Africa',
+  'UAR',
+  'Iran',
+  'Irak',
+  'Israel',
+  'Korea',
+];
+
+export default countriesArray;
