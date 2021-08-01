@@ -1,12 +1,19 @@
-.input {
-  padding: 0 10px;
-  width: 200px;
-  height: 20px;
-  font-size: 15px;
+.label-input {
+  display: flex;
+  flex-direction: column;
+  color: #444;
 
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  .input {
+    padding: 0 10px;
+    width: 200px;
+    height: 20px;
+    font-size: 15px;
+  
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
+  
 }

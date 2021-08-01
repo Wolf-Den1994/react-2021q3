@@ -1,5 +1,11 @@
-select {
-  width: 200px;
-  height: 20px;
-  padding: 0 10px;
+.label-country {
+  display: flex;
+  flex-direction: column;
+  color: #444;
+  
+  select {
+    width: 200px;
+    height: 20px;
+    padding: 0 10px;
+  }
 }

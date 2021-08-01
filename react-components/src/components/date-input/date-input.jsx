@@ -13,7 +13,9 @@ const DateInput = ({ type, onChangeHandler }) => {
   };
 
   return (
-    <input
+    <label className="label-date">
+      Date of Birth
+      <input
       type={type}
       placeholder="Date of Birth"
       min="1920-01-01"
@@ -21,6 +23,7 @@ const DateInput = ({ type, onChangeHandler }) => {
       onFocus={onChangeTypeInput}
       onChange={onChangeHandler}
     />
+    </label>
   );
 };
 

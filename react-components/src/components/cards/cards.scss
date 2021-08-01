@@ -1,0 +1,22 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  .card {
+    margin: 10px;
+    padding: 12px;
+    width: 130px;
+    height: 200px;
+    border: 2px solid #9e1da2;
+    border-radius: 12px;
+    box-shadow: 4px 7px 25px #e787ff;
+    background-color: #ece2ec;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    color: #222;
+  }
+}

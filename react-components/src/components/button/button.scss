@@ -1,13 +1,14 @@
 button {
   width: 100px;
-  height: 24px;
+  height: 28px;
   border: 2px solid #9e1da2;
   border-radius: 12px;
   outline: none;
   cursor: pointer;
   background-color: #9d1da23a;
   font-weight: 600;
-  color: #122;
+  font-size: 16px;
+  color: #424;
   transition: 0.3s;
 
   &:hover {

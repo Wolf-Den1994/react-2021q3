@@ -6,15 +6,23 @@ const Dropdown = ({ countries, onChangeHandler }) => {
   const countriesArray = countriesSort.map((countyObj) => {
     const low = countyObj.country.toLowerCase();
     return (
-      <option value={low} key={countyObj.id} disabled={low === 'your country'}>
+      <option
+        value={low}
+        key={countyObj.id}
+        selected={low === 'your country'}
+        disabled={low === 'your country'}
+      >
         {countyObj.country}
       </option>
     );
   });
   return (
-    <select name="countries" onChange={onChangeHandler}>
-      {countriesArray}
-    </select>
+    <label className="label-country">
+      Your country
+      <select name="countries" onChange={onChangeHandler}>
+        {countriesArray}
+      </select>
+    </label>
   );
 };
 

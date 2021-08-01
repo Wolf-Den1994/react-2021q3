@@ -14,7 +14,7 @@ const Form = ({ countriesArray, onForm }) => {
     gender: false,
     dateOfBirth: '',
     country: '',
-    zipcode: 0,
+    zipcode: null,
     notifications: false,
     treatment: false,
     id: 1,
@@ -46,41 +46,50 @@ const Form = ({ countriesArray, onForm }) => {
 
   const onClickBtnSubmit = (event) => {
     event.preventDefault();
-    onForm((oldState) => [...oldState, state])
+    onForm((oldState) => [...oldState, state]);
     console.log(state);
   };
 
   return (
     <form action="POST" className="user-form" onSubmit={onClickBtnSubmit}>
-      <InputText
-        type="text"
-        placeholder="Name"
-        onChangeHandler={onChangeName}
-      />
-      <InputText
-        type="text"
-        placeholder="Surname"
-        onChangeHandler={onChangeSurname}
-      />
-      <Checkbox
-        classNameLabel="switch"
-        classNameSpan="slider gender"
-        display="Gender"
-        onChangeHandler={onChangeGender}
-      />
-      <DateInput type="text" onChangeHandler={onChangeDate} />
-      <Dropdown countries={countriesArray} onChangeHandler={onChangeCountry} />
-      <InputText
-        type="number"
-        placeholder="Zip-code"
-        onChangeHandler={onChangeZipcode}
-      />
-      <Checkbox
-        classNameLabel="switch"
-        classNameSpan="slider"
-        display="Notifications"
-        onChangeHandler={onChangeNotifications}
-      />
+      <div className="top-form">
+        <div className="left-form">
+          <InputText
+            type="text"
+            placeholder="Name"
+            onChangeHandler={onChangeName}
+          />
+          <InputText
+            type="text"
+            placeholder="Surname"
+            onChangeHandler={onChangeSurname}
+          />
+          <Checkbox
+            classNameLabel="switch"
+            classNameSpan="slider gender"
+            display="Gender"
+            onChangeHandler={onChangeGender}
+          />
+        </div>
+        <div className="right-form">
+          <DateInput type="text" onChangeHandler={onChangeDate} />
+          <Dropdown
+            countries={countriesArray}
+            onChangeHandler={onChangeCountry}
+          />
+          <InputText
+            type="number"
+            placeholder="Zip-code"
+            onChangeHandler={onChangeZipcode}
+          />
+          <Checkbox
+            classNameLabel="switch"
+            classNameSpan="slider"
+            display="Notifications"
+            onChangeHandler={onChangeNotifications}
+          />
+        </div>
+      </div>
       <Checkbox
         value="treatment"
         display="Processing of personal data"

@@ -1,5 +1,11 @@
-input {
-  width: 200px;
-  height: 20px;
-  padding: 0 10px;
+.label-date {
+  display: flex;
+  flex-direction: column;
+  color: #444;
+
+  input {
+    width: 200px;
+    height: 20px;
+    padding: 0 10px;
+  }
 }

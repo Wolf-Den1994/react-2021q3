@@ -1,5 +1,5 @@
 const countriesArray = [
-  { country: 'your country', id: 1 },
+  { country: 'Your country', id: 1 },
   { country: 'Australia', id: 2 },
   { country: 'Belarus', id: 3 },
   { country: 'Brazil', id: 4 },

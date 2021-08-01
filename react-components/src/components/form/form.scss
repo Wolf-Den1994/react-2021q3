@@ -1,9 +1,9 @@
 .user-form {
   padding: 14px;
   margin: 10px 0 30px 0;
-  max-width: 300px;
+  max-width: 500px;
   width: 100%;
-  min-height: 300px;
+  min-height: 280px;
 
   display: flex;
   flex-direction: column;
@@ -14,4 +14,20 @@
   border-radius: 14px;
   box-shadow: 4px 7px 25px #e787ff;
   background-color: #ece2ec;
+
+  .top-form {
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left-form,
+    .right-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 180px;
+    }
+  }
 }
