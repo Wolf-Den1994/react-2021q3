@@ -3,16 +3,19 @@ import './dropdown.scss';
 
 const Dropdown = ({ countries, onChangeHandler }) => {
   const countriesSort = countries.sort();
-  countriesSort.unshift('your country');
-  const countriesArray = countriesSort.map((county) => {
-    const low = county.toLowerCase();
+  const countriesArray = countriesSort.map((countyObj) => {
+    const low = countyObj.country.toLowerCase();
     return (
-      <option value={low} key={low} disabled={low === 'your country'}>
-        {county}
+      <option value={low} key={countyObj.id} disabled={low === 'your country'}>
+        {countyObj.country}
       </option>
     );
   });
-  return <select name="countries" onChange={onChangeHandler}>{countriesArray}</select>;
+  return (
+    <select name="countries" onChange={onChangeHandler}>
+      {countriesArray}
+    </select>
+  );
 };
 
 export default Dropdown;

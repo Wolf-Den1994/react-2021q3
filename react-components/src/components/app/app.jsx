@@ -3,49 +3,53 @@ import Form from '../form/form';
 import './app.scss';
 
 const App = ({ countries }) => {
-  const [name, setName] = useState();
+  let maxId = 1;
+  const [
+    state = {
+      data: [
+        {
+          name: '',
+          surname: '',
+          gender: false,
+          dateOfBirth: '',
+          country: '',
+          zipcode: 0,
+          notifications: false,
+          treatment: false,
+          id: 1,
+        },
+      ],
+    },
+    setState,
+  ] = useState();
   const onChangeName = (event) => {
-    setName(event.target.value);
+    setState({ ...state, name: event.target.value });
   };
-
-  const [surname, setSurname] = useState();
   const onChangeSurname = (event) => {
-    setSurname(event.target.value);
+    setState({ ...state, surname: event.target.value });
   };
-
-  const [zipcode, setZipcode] = useState();
-  const onChangeZipcode = (event) => {
-    setZipcode(event.target.value);
-  };
-
-  const [gender, setGender] = useState();
   const onChangeGender = (event) => {
-    setGender(event.target.checked);
+    setState({ ...state, gender: event.target.checked });
   };
-
-  const [notifications, setNotifications] = useState();
-  const onChangeNotifications = (event) => {
-    setNotifications(event.target.checked);
-  };
-
-  const [treatment, setTreatment] = useState();
-  const onChangeTreatment = (event) => {
-    setTreatment(event.target.checked);
-  };
-
-  const [dateOfBirth, setdateOfBirth] = useState();
   const onChangeDate = (event) => {
-    setdateOfBirth(event.target.value);
+    setState({ ...state, dateOfBirth: event.target.value });
   };
-
-  const [country, setCountry] = useState();
   const onChangeCountry = (event) => {
-    setCountry(event.target.value);
+    setState({ ...state, country: event.target.value, keys: maxId++ });
+  };
+  const onChangeZipcode = (event) => {
+    setState({ ...state, zipcode: +event.target.value });
+  };
+  const onChangeNotifications = (event) => {
+    setState({ ...state, notifications: event.target.checked });
+  };
+  const onChangeTreatment = (event) => {
+    setState({ ...state, treatment: event.target.checked });
   };
 
   const onClickBtnSubmit = (event) => {
     event.preventDefault();
-    console.log(name, surname, gender, dateOfBirth, country, zipcode, notifications, treatment);
+    console.log(state);
   };
 
   return (
