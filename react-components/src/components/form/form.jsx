@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../button/button';
 import Checkbox from '../checkbox/checkbox';
 import DateInput from '../date-input/date-input';
@@ -6,8 +6,14 @@ import Dropdown from '../dropdown/dropdown';
 import InputText from '../input/input';
 import './form.scss';
 
-const Form = ({ countriesArray, onForm }) => {
-  let maxId = 1;
+const Form = ({ countriesArray, onForm, onError }) => {
+  const validate = () => {
+    setErrors({})
+    console.log(errors)
+    if (!state.name) {
+      setErrors((store)=>({...store, state}))
+    }
+  }
   const [state, setState] = useState({
     name: '',
     surname: '',
@@ -19,6 +25,10 @@ const Form = ({ countriesArray, onForm }) => {
     treatment: false,
     id: 1,
   });
+  const [errors, setErrors] = useState({});
+  useEffect(() => {
+    validate();
+  }, [state])
   const onChangeName = (event) => {
     setState({ ...state, name: event.target.value });
   };
@@ -32,7 +42,7 @@ const Form = ({ countriesArray, onForm }) => {
     setState({ ...state, dateOfBirth: event.target.value });
   };
   const onChangeCountry = (event) => {
-    setState({ ...state, country: event.target.value, keys: maxId++ });
+    setState({ ...state, country: event.target.value });
   };
   const onChangeZipcode = (event) => {
     setState({ ...state, zipcode: +event.target.value });
@@ -44,10 +54,28 @@ const Form = ({ countriesArray, onForm }) => {
     setState({ ...state, treatment: event.target.checked });
   };
 
+  const validateSubmit = (newState) => {
+    let counterProperty = 0;
+    for (let key in newState) {
+      if (key === 'gender' || key === 'notifications' || key === 'id') continue;
+      if (newState[key]) counterProperty++;
+    }
+    return counterProperty === 6;
+  }
+
   const onClickBtnSubmit = (event) => {
     event.preventDefault();
-    onForm((oldState) => [...oldState, state]);
-    console.log(state);
+    const newState = {...state, id: state.id++}
+    if (validateSubmit(newState)) {
+      onForm((oldState) => [...oldState, newState]);
+    } else {
+      onError((store) => store = true)
+      setTimeout(() => {
+        onError((store) => store = false)
+      }, 1300);
+    }
+    
+    // console.log(state);
   };
 
   return (

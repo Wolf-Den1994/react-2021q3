@@ -9,7 +9,6 @@ const Dropdown = ({ countries, onChangeHandler }) => {
       <option
         value={low}
         key={countyObj.id}
-        selected={low === 'your country'}
         disabled={low === 'your country'}
       >
         {countyObj.country}
@@ -19,7 +18,7 @@ const Dropdown = ({ countries, onChangeHandler }) => {
   return (
     <label className="label-country">
       Your country
-      <select name="countries" onChange={onChangeHandler}>
+      <select name="countries" onChange={onChangeHandler} defaultValue='your country'>
         {countriesArray}
       </select>
     </label>
