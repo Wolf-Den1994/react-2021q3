@@ -45,7 +45,7 @@ const Form = ({ countriesArray, onForm, onError }) => {
     setState({ ...state, country: event.target.value });
   };
   const onChangeZipcode = (event) => {
-    setState({ ...state, zipcode: +event.target.value });
+    setState({ ...state, zipcode: event.target.value });
   };
   const onChangeNotifications = (event) => {
     setState({ ...state, notifications: event.target.checked });
