@@ -1,9 +1,7 @@
 import React from 'react';
 import './input.scss';
 
-const InputText = ({
-  type, placeholder, onChangeHandler, error, value,
-}) => (
+const InputText = ({ type, placeholder, onChangeHandler, error, value }) => (
   <label className="label-input">
     <span>{placeholder}</span>
     <span>

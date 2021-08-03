@@ -1,14 +1,14 @@
 import React from 'react';
 import './dropdown.scss';
 
-const Dropdown = ({
-  countries, onChangeHandler, error, initialValue,
-}) => {
+const initialCountry = 'your country';
+
+const Dropdown = ({ countries, onChangeHandler, error, initialValue }) => {
   const countriesSort = countries.sort();
   const countriesArray = countriesSort.map((countyObj) => {
     const low = countyObj.country.toLowerCase();
     return (
-      <option value={low} key={countyObj.id} disabled={low === 'your country'}>
+      <option value={low} key={countyObj.id} disabled={low === initialCountry}>
         {countyObj.country}
       </option>
     );
@@ -20,14 +20,14 @@ const Dropdown = ({
         {!error && (
           <span className="error">
             <span>* enter </span>
-            {'Your country'.toLowerCase()}
+            {initialCountry}
           </span>
         )}
       </span>
       <select
         name="countries"
         onChange={onChangeHandler}
-        value={initialValue || 'your country'}
+        value={initialValue || initialCountry}
       >
         {countriesArray}
       </select>

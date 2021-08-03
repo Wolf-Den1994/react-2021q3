@@ -6,9 +6,7 @@ const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
 
-const DateInput = ({
-  type, onChangeHandler, error, value,
-}) => {
+const DateInput = ({ type, onChangeHandler, error, value }) => {
   const onChangeTypeInput = (e) => {
     e.currentTarget.type = 'date';
     e.currentTarget.focus();
