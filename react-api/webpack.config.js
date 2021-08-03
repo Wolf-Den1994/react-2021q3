@@ -22,9 +22,7 @@ const esLintPlugin = (isDev) =>
 module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   devtool: 'inline-source-map',
-  entry: {
-    main: './src/index.jsx',
-  },
+  entry: ['babel-polyfill', './src/index.jsx'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
