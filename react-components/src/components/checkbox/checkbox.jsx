@@ -2,17 +2,18 @@ import React from 'react';
 import './checkbox.scss';
 
 const Checkbox = ({
-  value,
+  name,
   display,
   classNameLabel,
   classNameSpan,
   onChangeHandler,
   error,
+  value,
 }) => (
   <>
-    <label htmlFor={value} className={classNameLabel}>
+    <label htmlFor={name} className={classNameLabel}>
       <span className="display">
-        {value === 'treatment' ? (
+        {name === 'treatment' ? (
           <span>
             <span>{display}</span>
             <span>
@@ -25,9 +26,10 @@ const Checkbox = ({
       </span>
       <input
         type="checkbox"
-        id={value}
-        name={value}
+        id={name}
+        name={name}
         onChange={onChangeHandler}
+        checked={value}
       />
       <span className={classNameSpan} />
     </label>

@@ -7,22 +7,27 @@ import InputText from '../input/input';
 import './form.scss';
 
 const Form = ({ countriesArray, onForm, onError }) => {
-  const [state, setState] = useState({
+  const initialData = {
     name: '',
     surname: '',
     gender: false,
     dateOfBirth: '',
     country: '',
-    zipcode: null,
+    zipcode: '',
     notifications: false,
     treatment: false,
-    id: 1,
-  });
+  };
+
+  const [state, setState] = useState({ ...initialData, id: 1 });
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     setErrors((store) => ({ ...store, ...state }));
   }, [state]);
+
+  const reset = () => {
+    setState((store) => ({ ...store, ...initialData }));
+  };
 
   const onChangeName = (event) => {
     setState({ ...state, name: event.target.value });
@@ -64,6 +69,7 @@ const Form = ({ countriesArray, onForm, onError }) => {
     const newState = { ...state, id: state.id++ };
     if (validateSubmit(newState)) {
       onForm((oldState) => [...oldState, newState]);
+      reset();
     } else {
       onError((store) => {
         let newStore = store;
@@ -78,8 +84,6 @@ const Form = ({ countriesArray, onForm, onError }) => {
         });
       }, 1300);
     }
-
-    // console.log(state);
   };
 
   return (
@@ -91,18 +95,21 @@ const Form = ({ countriesArray, onForm, onError }) => {
             placeholder="Name"
             onChangeHandler={onChangeName}
             error={errors.name}
+            value={state.name}
           />
           <InputText
             type="text"
             placeholder="Surname"
             onChangeHandler={onChangeSurname}
             error={errors.surname}
+            value={state.surname}
           />
           <Checkbox
             classNameLabel="switch"
             classNameSpan="slider gender"
             display="Gender"
             onChangeHandler={onChangeGender}
+            value={state.gender}
           />
         </div>
         <div className="right-form">
@@ -110,33 +117,38 @@ const Form = ({ countriesArray, onForm, onError }) => {
             type="text"
             onChangeHandler={onChangeDate}
             error={errors.dateOfBirth}
+            value={state.dateOfBirth}
           />
           <Dropdown
             countries={countriesArray}
             onChangeHandler={onChangeCountry}
             error={errors.country}
+            initialValue={state.country}
           />
           <InputText
             type="number"
             placeholder="Zip-code"
             onChangeHandler={onChangeZipcode}
             error={errors.zipcode}
+            value={state.zipcode}
           />
           <Checkbox
             classNameLabel="switch"
             classNameSpan="slider"
             display="Notifications"
             onChangeHandler={onChangeNotifications}
+            value={state.notifications}
           />
         </div>
       </div>
       <Checkbox
-        value="treatment"
+        name="treatment"
         display="Processing of personal data"
         classNameLabel="checkbox-label"
         classNameSpan="hide"
         onChangeHandler={onChangeTreatment}
         error={errors.treatment}
+        value={state.treatment}
       />
       <Button />
     </form>

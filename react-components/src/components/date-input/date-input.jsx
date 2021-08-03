@@ -6,7 +6,9 @@ const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
 
-const DateInput = ({ type, onChangeHandler, error }) => {
+const DateInput = ({
+  type, onChangeHandler, error, value,
+}) => {
   const onChangeTypeInput = (e) => {
     e.currentTarget.type = 'date';
     e.currentTarget.focus();
@@ -18,7 +20,7 @@ const DateInput = ({ type, onChangeHandler, error }) => {
       <span>
         {!error && (
           <span className="error">
-            * enter
+            <span>* enter </span>
             {'Date of Birth'.toLowerCase()}
           </span>
         )}
@@ -30,6 +32,7 @@ const DateInput = ({ type, onChangeHandler, error }) => {
         max={`${yyyy}-${mm}-${dd}`}
         onFocus={onChangeTypeInput}
         onChange={onChangeHandler}
+        value={value}
       />
     </label>
   );

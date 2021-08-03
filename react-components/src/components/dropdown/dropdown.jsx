@@ -1,7 +1,9 @@
 import React from 'react';
 import './dropdown.scss';
 
-const Dropdown = ({ countries, onChangeHandler, error }) => {
+const Dropdown = ({
+  countries, onChangeHandler, error, initialValue,
+}) => {
   const countriesSort = countries.sort();
   const countriesArray = countriesSort.map((countyObj) => {
     const low = countyObj.country.toLowerCase();
@@ -17,7 +19,7 @@ const Dropdown = ({ countries, onChangeHandler, error }) => {
       <span>
         {!error && (
           <span className="error">
-            * enter
+            <span>* enter </span>
             {'Your country'.toLowerCase()}
           </span>
         )}
@@ -25,7 +27,7 @@ const Dropdown = ({ countries, onChangeHandler, error }) => {
       <select
         name="countries"
         onChange={onChangeHandler}
-        defaultValue="your country"
+        value={initialValue || 'your country'}
       >
         {countriesArray}
       </select>

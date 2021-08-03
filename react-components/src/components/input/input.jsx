@@ -2,17 +2,14 @@ import React from 'react';
 import './input.scss';
 
 const InputText = ({
-  type, placeholder, onChangeHandler, error,
+  type, placeholder, onChangeHandler, error, value,
 }) => (
   <label className="label-input">
-    <span>
-      {placeholder}
-      {' '}
-    </span>
+    <span>{placeholder}</span>
     <span>
       {!error && (
         <span className="error">
-          * enter
+          <span>* enter </span>
           {placeholder.toLowerCase()}
         </span>
       )}
@@ -22,6 +19,7 @@ const InputText = ({
       placeholder={placeholder}
       className="input"
       onChange={onChangeHandler}
+      value={value}
     />
   </label>
 );
