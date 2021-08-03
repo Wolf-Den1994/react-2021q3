@@ -7,13 +7,6 @@ import InputText from '../input/input';
 import './form.scss';
 
 const Form = ({ countriesArray, onForm, onError }) => {
-  const validate = () => {
-    setErrors({})
-    console.log(errors)
-    if (!state.name) {
-      setErrors((store)=>({...store, state}))
-    }
-  }
   const [state, setState] = useState({
     name: '',
     surname: '',
@@ -26,9 +19,11 @@ const Form = ({ countriesArray, onForm, onError }) => {
     id: 1,
   });
   const [errors, setErrors] = useState({});
+
   useEffect(() => {
-    validate();
-  }, [state])
+    setErrors((store) => ({ ...store, ...state }));
+  }, [state]);
+
   const onChangeName = (event) => {
     setState({ ...state, name: event.target.value });
   };
@@ -56,25 +51,34 @@ const Form = ({ countriesArray, onForm, onError }) => {
 
   const validateSubmit = (newState) => {
     let counterProperty = 0;
-    for (let key in newState) {
-      if (key === 'gender' || key === 'notifications' || key === 'id') continue;
-      if (newState[key]) counterProperty++;
-    }
+    Object.keys(newState).forEach((key) => {
+      if (key !== 'gender' && key !== 'notifications' && key !== 'id') {
+        if (newState[key]) counterProperty++;
+      }
+    });
     return counterProperty === 6;
-  }
+  };
 
   const onClickBtnSubmit = (event) => {
     event.preventDefault();
-    const newState = {...state, id: state.id++}
+    const newState = { ...state, id: state.id++ };
     if (validateSubmit(newState)) {
       onForm((oldState) => [...oldState, newState]);
     } else {
-      onError((store) => store = true)
+      onError((store) => {
+        let newStore = store;
+        newStore = true;
+        return newStore;
+      });
       setTimeout(() => {
-        onError((store) => store = false)
+        onError((store) => {
+          let newStore = store;
+          newStore = false;
+          return newStore;
+        });
       }, 1300);
     }
-    
+
     // console.log(state);
   };
 
@@ -86,11 +90,13 @@ const Form = ({ countriesArray, onForm, onError }) => {
             type="text"
             placeholder="Name"
             onChangeHandler={onChangeName}
+            error={errors.name}
           />
           <InputText
             type="text"
             placeholder="Surname"
             onChangeHandler={onChangeSurname}
+            error={errors.surname}
           />
           <Checkbox
             classNameLabel="switch"
@@ -100,15 +106,21 @@ const Form = ({ countriesArray, onForm, onError }) => {
           />
         </div>
         <div className="right-form">
-          <DateInput type="text" onChangeHandler={onChangeDate} />
+          <DateInput
+            type="text"
+            onChangeHandler={onChangeDate}
+            error={errors.dateOfBirth}
+          />
           <Dropdown
             countries={countriesArray}
             onChangeHandler={onChangeCountry}
+            error={errors.country}
           />
           <InputText
             type="number"
             placeholder="Zip-code"
             onChangeHandler={onChangeZipcode}
+            error={errors.zipcode}
           />
           <Checkbox
             classNameLabel="switch"
@@ -124,6 +136,7 @@ const Form = ({ countriesArray, onForm, onError }) => {
         classNameLabel="checkbox-label"
         classNameSpan="hide"
         onChangeHandler={onChangeTreatment}
+        error={errors.treatment}
       />
       <Button />
     </form>

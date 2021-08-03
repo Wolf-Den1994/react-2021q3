@@ -6,7 +6,8 @@
 
 body {
   background-color: #cacaca;
-  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow", "Arial", sans-serif;
+  font-family: 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', 'Arial',
+    sans-serif;
 }
 
 #root {
@@ -14,4 +15,9 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.error {
+  color: #911414;
+  font-size: 12px;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import './cards.scss'
+import './cards.scss';
 
 const Cards = ({ values }) => {
-  const elements = values.map((value, index) => {
-    const {id} = value;
-    return(
+  const elements = values.map((value) => {
+    const { id } = value;
+    return (
       <div className="card" key={id}>
         <p className="name">{value.name}</p>
         <p className="surname">{value.surname}</p>
@@ -15,13 +15,9 @@ const Cards = ({ values }) => {
         <p className="notifications">{value.notifications}</p>
         <p className="treatment">{value.treatment}</p>
       </div>
-    )
-  })
-  return (
-    <div className="cards">
-      {elements}
-    </div>
-  )
+    );
+  });
+  return <div className="cards">{elements}</div>;
 };
 
 export default Cards;

@@ -31,7 +31,7 @@
 
   &:before {
     position: absolute;
-    content: "";
+    content: '';
     height: 13px;
     width: 13px;
     left: 4px;
@@ -43,7 +43,7 @@
 
   &.gender:after {
     transition: 0.5;
-    content: "Male";
+    content: 'Male';
     display: block;
     position: absolute;
     color: #444;
@@ -68,7 +68,7 @@ input:checked + .slider:before {
 
 input:checked + .slider.gender:after {
   transition: 0.5;
-  content: "Female";
+  content: 'Female';
   left: 170%;
 }
 
@@ -85,5 +85,10 @@ input:checked + .slider.gender:after {
 
   .display {
     color: #444;
+
+    span {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
