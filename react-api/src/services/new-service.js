@@ -4,10 +4,10 @@ export default class NewsServise {
     this.apiKey = 'b803f864ff854a239952514f8bfdc13d';
   }
 
-  async getResourse(q, sortBy) {
+  async getResourse(q, sortBy, num, page) {
     if (q) {
       const response = await fetch(`
-      ${this.apiBase}?q=${q}&sortBy=${sortBy}&apiKey=${this.apiKey}&pageSize=5&page=1
+      ${this.apiBase}?q=${q}&sortBy=${sortBy}&apiKey=${this.apiKey}&pageSize=${num}&page=${page}
     `);
 
       if (!response.ok) {
