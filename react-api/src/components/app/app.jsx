@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import NewsServise from '../../services/new-service';
 import SearchBar from '../search-bar/search-bar';
 import Card from '../card/card';
+import Emtry from '../entry/emtry';
+import Sort from '../sort/sort';
 
 const App = () => {
   const newsServise = new NewsServise();
@@ -11,16 +13,21 @@ const App = () => {
   const [data, setDate] = useState({});
 
   useEffect(() => {
-    newsServise.getResourse(searchString, sort).then((response) => {
-      console.log(response);
-      setDate(response);
-    });
+    newsServise
+      .getResourse(searchString, sort)
+      .then((response) => {
+        setDate(response);
+      })
+      .catch();
   }, [searchString]);
 
   return (
     <>
       <SearchBar onSearch={setSearchString} />
-      <Card data={data} />
+      {!Object.keys(data).length ? null : (
+        <Sort sortBy={sort} onSortBy={setSort} />
+      )}
+      {!Object.keys(data).length ? <Emtry /> : <Card data={data} />}
     </>
   );
 };

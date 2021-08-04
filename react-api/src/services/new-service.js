@@ -5,15 +5,18 @@ export default class NewsServise {
   }
 
   async getResourse(q, sortBy) {
-    const response = await fetch(`
+    if (q) {
+      const response = await fetch(`
       ${this.apiBase}?q=${q}&sortBy=${sortBy}&apiKey=${this.apiKey}&pageSize=5&page=1
     `);
 
-    if (!response.ok) {
-      throw new Error(`Could not fetch ${q}, status: ${response.status}`);
-    }
+      if (!response.ok) {
+        throw new Error(`Could not fetch ${q}, status: ${response.status}`);
+      }
 
-    const data = await response.json();
-    return data;
+      const data = await response.json();
+      return data;
+    }
+    return {};
   }
 }
