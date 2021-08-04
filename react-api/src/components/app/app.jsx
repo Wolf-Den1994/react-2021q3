@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NewsServise from '../../services/new-service';
 import SearchBar from '../search-bar/search-bar';
 import Card from '../card/card';
-import Emtry from '../entry/emtry';
+import Emtry from '../emtry/emtry';
 import Sort from '../sort/sort';
 
 const App = () => {
@@ -19,7 +19,7 @@ const App = () => {
         setDate(response);
       })
       .catch();
-  }, [searchString]);
+  }, [searchString, sort]);
 
   return (
     <>
