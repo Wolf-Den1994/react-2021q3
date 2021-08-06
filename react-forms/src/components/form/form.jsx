@@ -6,7 +6,7 @@ import Dropdown from '../dropdown/dropdown';
 import InputText from '../input/input';
 import './form.scss';
 
-const Form = ({ countriesArray, onForm, onError }) => {
+const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
   const initialData = {
     name: '',
     surname: '',
@@ -70,6 +70,18 @@ const Form = ({ countriesArray, onForm, onError }) => {
     if (validateSubmit(newState)) {
       onForm((oldState) => [...oldState, newState]);
       reset();
+      onSuccess((store) => {
+        let newStore = store;
+        newStore = true;
+        return newStore;
+      });
+      setTimeout(() => {
+        onSuccess((store) => {
+          let newStore = store;
+          newStore = false;
+          return newStore;
+        });
+      }, 1300);
     } else {
       onError((store) => {
         let newStore = store;
