@@ -41,6 +41,11 @@
       word-wrap: break-word;
     }
 
+    .published {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
     .source {
       display: flex;
       justify-content: space-between;
