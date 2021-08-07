@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import NewsServise from '../../services/new-service';
 import SearchBar from '../search-bar/search-bar';
 import Card from '../card/card';
-import Emtry from '../emtry/emtry';
 import Sort from '../sort/sort';
 import Pagination from '../pagination/pagination';
 import Spinner from '../spinner/spinner';
@@ -16,7 +15,7 @@ const App = () => {
   const [numberResult, setNumberResult] = useState(10);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     newsServise
@@ -37,7 +36,7 @@ const App = () => {
       {!Object.keys(data).length ? null : (
         <Sort sortBy={sort} onSortBy={setSort} />
       )}
-      {!Object.keys(data).length ? <Emtry /> : main}
+      {!Object.keys(data).length && !loading ? <></> : main}
       {!Object.keys(data).length ? null : (
         <Pagination
           num={numberResult}
