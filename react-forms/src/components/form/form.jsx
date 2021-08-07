@@ -4,13 +4,15 @@ import Checkbox from '../checkbox/checkbox';
 import DateInput from '../date-input/date-input';
 import Dropdown from '../dropdown/dropdown';
 import InputText from '../input/input';
+import Switcher from '../switcher/switcher';
 import './form.scss';
 
 const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
   const initialData = {
     name: '',
     surname: '',
-    gender: false,
+    male: true,
+    female: false,
     dateOfBirth: '',
     country: '',
     zipcode: '',
@@ -35,8 +37,19 @@ const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
   const onChangeSurname = (event) => {
     setState({ ...state, surname: event.target.value });
   };
-  const onChangeGender = (event) => {
-    setState({ ...state, gender: event.target.checked });
+  const onChangeMale = (event) => {
+    setState({
+      ...state,
+      male: event.target.checked,
+      female: !event.target.checked,
+    });
+  };
+  const onChangeFemale = (event) => {
+    setState({
+      ...state,
+      female: event.target.checked,
+      male: !event.target.checked,
+    });
   };
   const onChangeDate = (event) => {
     setState({ ...state, dateOfBirth: event.target.value });
@@ -57,11 +70,11 @@ const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
   const validateSubmit = (newState) => {
     let counterProperty = 0;
     Object.keys(newState).forEach((key) => {
-      if (key !== 'gender' && key !== 'notifications' && key !== 'id') {
+      if (key !== 'notifications' && key !== 'id') {
         if (newState[key]) counterProperty++;
       }
     });
-    return counterProperty === 6;
+    return counterProperty === 7;
   };
 
   const onClickBtnSubmit = (event) => {
@@ -70,30 +83,14 @@ const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
     if (validateSubmit(newState)) {
       onForm((oldState) => [...oldState, newState]);
       reset();
-      onSuccess((store) => {
-        let newStore = store;
-        newStore = true;
-        return newStore;
-      });
+      onSuccess(true);
       setTimeout(() => {
-        onSuccess((store) => {
-          let newStore = store;
-          newStore = false;
-          return newStore;
-        });
+        onSuccess(false);
       }, 1300);
     } else {
-      onError((store) => {
-        let newStore = store;
-        newStore = true;
-        return newStore;
-      });
+      onError(true);
       setTimeout(() => {
-        onError((store) => {
-          let newStore = store;
-          newStore = false;
-          return newStore;
-        });
+        onError(false);
       }, 1300);
     }
   };
@@ -116,12 +113,10 @@ const Form = ({ countriesArray, onForm, onError, onSuccess }) => {
             error={errors.surname}
             value={state.surname}
           />
-          <Checkbox
-            classNameLabel="switch"
-            classNameSpan="slider gender"
-            display="Gender"
-            onChangeHandler={onChangeGender}
-            value={state.gender}
+          <Switcher
+            onChangeMale={onChangeMale}
+            onChangeFemale={onChangeFemale}
+            value={state}
           />
         </div>
         <div className="right-form">

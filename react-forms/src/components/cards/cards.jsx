@@ -8,7 +8,7 @@ const Cards = ({ values }) => {
       <div className="card" key={id}>
         <p className="name">{value.name}</p>
         <p className="surname">{value.surname}</p>
-        <p className="gender">{value.gender ? 'Female' : 'Male'}</p>
+        <p className="gender">{value.male ? 'Male' : 'Female'}</p>
         <p className="birth">{value.dateOfBirth}</p>
         <p className="country">{value.country}</p>
         <p className="zipcode">{value.zipcode}</p>
