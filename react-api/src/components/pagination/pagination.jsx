@@ -38,22 +38,10 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
     changePage(event.target.value);
   };
 
-  const resetBtns = (btn) => {
-    const parent = btn.parentElement;
-    const collection = [...parent.children];
-    console.log(collection);
-    collection.forEach((elem) => {
-      if (elem.classList.contains('pagination-btn')) {
-        elem.disabled = false;
-      }
-    })
-  };
-
   const onGoPrevPage = (event) => {
     changePage((store) => {
       if (+store !== 1) {
         const newStore = +store - 1;
-        resetBtns(event.target);
         if (+store === 1 + 1) {
           event.target.disabled = true;
         }
@@ -67,7 +55,6 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
     changePage((store) => {
       if (+store !== numberPage) {
         const newStore = +store + 1;
-        resetBtns(event.target);
         if (+store === numberPage - 1) {
           event.target.disabled = true;
         }
