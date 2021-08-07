@@ -2,19 +2,23 @@ import React from 'react';
 import './sort.scss';
 
 const Sort = ({ onSortBy }) => {
-  const onClickBtns = (event) => {
-    if (event.key !== 'Enter') return;
-    console.log(event);
+  const changeSort = (event) => {
     const { target } = event;
     onSortBy(target.id);
     target.classList.add('active');
+  };
+
+  const onClickBtns = (event) => changeSort(event);
+  const onKeyClickBtns = (event) => {
+    if (event.key !== 'Enter') return;
+    changeSort(event);
   };
 
   return (
     <div
       className="sort-wrapper"
       onClick={onClickBtns}
-      onKeyDown={onClickBtns}
+      onKeyDown={onKeyClickBtns}
       role="presentation"
     >
       <button className="sort-btn" id="relevancy" type="button">

@@ -2,6 +2,7 @@ export default class NewsServise {
   constructor() {
     this.apiBase = 'https://newsapi.org/v2/everything';
     this.apiKey = 'b803f864ff854a239952514f8bfdc13d';
+    // this.apiKey = 'c1cb6e664a90485890169a95c58e7dfa';
   }
 
   async getResourse(q, sortBy, num, page) {

@@ -5,6 +5,7 @@ import Card from '../card/card';
 import Emtry from '../emtry/emtry';
 import Sort from '../sort/sort';
 import Pagination from '../pagination/pagination';
+import Spinner from '../spinner/spinner';
 
 const App = () => {
   const newsServise = new NewsServise();
@@ -15,25 +16,28 @@ const App = () => {
   const [numberResult, setNumberResult] = useState(10);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     newsServise
       .getResourse(searchString, sort, numberResult, page)
       .then((response) => {
         setDate(response);
-        console.log(response)
         setTotalResults(response.totalResults);
+        if (Object.keys(response).length) setLoading(false);
       })
       .catch();
-  }, [searchString, sort, numberResult, page]);
+  }, [searchString, sort, numberResult, page, loading]);
+
+  const main = loading ? <Spinner /> : <Card data={data} />;
 
   return (
     <>
-      <SearchBar onSearch={setSearchString} />
+      <SearchBar onSearch={setSearchString} onLoading={setLoading} />
       {!Object.keys(data).length ? null : (
         <Sort sortBy={sort} onSortBy={setSort} />
       )}
-      {!Object.keys(data).length ? <Emtry /> : <Card data={data} />}
+      {!Object.keys(data).length ? <Emtry /> : main}
       {!Object.keys(data).length ? null : (
         <Pagination
           num={numberResult}
@@ -41,7 +45,6 @@ const App = () => {
           page={page}
           changePage={setPage}
           total={totalResults}
-          changeTotal={setTotalResults}
         />
       )}
     </>

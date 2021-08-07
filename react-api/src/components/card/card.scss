@@ -18,29 +18,34 @@
       height: 157px;
       margin-bottom: 10px;
       border-radius: 12px;
+      word-wrap: break-word;
     }
 
     .title {
       text-align: center;
       font-weight: 800;
       margin-bottom: 10px;
+      word-wrap: break-word;
     }
 
     .description {
       text-align: justify;
       margin-bottom: 10px;
+      word-wrap: break-word;
     }
 
     .author {
       text-align: right;
       font-weight: 600;
       margin-bottom: 10px;
+      word-wrap: break-word;
     }
 
     .source {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      word-wrap: break-word;
     }
 
     .link {

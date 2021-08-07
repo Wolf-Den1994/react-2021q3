@@ -1,10 +1,11 @@
 .pagination-wrapper {
-  width: 270px;
+  width: 350px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  padding: 30px 30px 60px;
+  position: relative;
 
   .pagination-btn {
     width: 40px;
@@ -22,6 +23,15 @@
     &:hover {
       transform: scale(1.1);
     }
+
+    &:active {
+      transform: scale(1.2) translateY(5px);
+    }
+
+    &:disabled {
+      filter: sepia(1);
+      transform: scale(1);
+    }
   }
 
   .pagination-select {
@@ -30,6 +40,11 @@
     font-size: 19px;
     text-align: center;
     padding: 0 0 0 7px;
+
+    &.result-pages {
+      width: 110px;
+      font-size: 16px;
+    }
   }
 
   .left {
@@ -38,5 +53,12 @@
 
   .right {
     background-image: url(../../assets/right-arrow.svg);
+  }
+
+  .pagination-total {
+    position: absolute;
+    top: 81px;
+    left: 22%;
+    font-weight: 500;
   }
 }

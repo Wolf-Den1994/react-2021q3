@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './search-bar.scss';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onLoading }) => {
   const [valueSearch, setValueSearch] = useState('');
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     onSearch(valueSearch);
+    onLoading(true);
   };
 
   const onChangeValueSearch = (event) => {

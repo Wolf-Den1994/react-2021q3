@@ -38,7 +38,12 @@ module.exports = ({ development }) => ({
           options: {
             presets: [
               '@babel/preset-env',
-              ['babel-preset-minify'],
+              [
+                'babel-preset-minify',
+                {
+                  builtIns: false,
+                },
+              ],
               '@babel/react',
             ],
           },
