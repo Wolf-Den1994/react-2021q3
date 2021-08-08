@@ -45,5 +45,11 @@
     &:hover {
       transform: scale(1.1);
     }
+
+    &:disabled {
+      cursor: default;
+      transform: scale(1);
+      filter: grayscale(0.75);
+    }
   }
 }

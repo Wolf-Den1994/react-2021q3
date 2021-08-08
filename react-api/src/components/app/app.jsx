@@ -17,6 +17,7 @@ const App = () => {
   const [totalResults, setTotalResults] = useState();
   const [loading, setLoading] = useState(false);
   const [empty, setEmpty] = useState(false);
+  const [disabledBtn, setDisabledBtn] = useState([true, false]);
 
   useEffect(() => {
     newsServise
@@ -33,7 +34,7 @@ const App = () => {
           }
         }
       })
-      .catch();
+      .catch((e) => console.error('Error: ', e));
   }, [searchString, sort, numberResult, page, loading, empty]);
 
   const main = loading ? <Spinner /> : <Card data={data} />;
@@ -53,6 +54,8 @@ const App = () => {
       page={page}
       changePage={setPage}
       total={totalResults}
+      btn={disabledBtn}
+      onBtn={setDisabledBtn}
     />
   ) : (
     <></>

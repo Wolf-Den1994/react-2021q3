@@ -18,10 +18,15 @@
     background-color: #c4d2e4;
     transition: 0.2s;
 
-    &:hover,
-    .active {
+    &:hover {
       box-shadow: 6px 9px 9px #194e72;
       background-color: #e8ebf0;
+    }
+
+    &.active {
+      box-shadow: 6px 9px 9px #092a41;
+      background-color: #fafbfc;
+      cursor: default;
     }
   }
 }

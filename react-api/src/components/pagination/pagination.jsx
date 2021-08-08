@@ -1,7 +1,15 @@
 import React from 'react';
 import './pagination.scss';
 
-const Pagination = ({ num, changeNum, page, changePage, total }) => {
+const Pagination = ({
+  num,
+  changeNum,
+  page,
+  changePage,
+  total,
+  btn,
+  onBtn,
+}) => {
   const maxRequestFromServer = 100;
   const optionsPage = [];
   const maxTotal = total > maxRequestFromServer ? maxRequestFromServer : total;
@@ -42,8 +50,23 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
     changePage((store) => {
       if (+store !== 1) {
         const newStore = +store - 1;
+        onBtn((storeBtn) => {
+          const copy = [...storeBtn];
+          const newStoreBtn = copy.map(() => false);
+          return newStoreBtn;
+        });
         if (+store === 1 + 1) {
-          event.target.disabled = true;
+          onBtn((storeBtn) => {
+            const copy = [...storeBtn];
+            const id = event.target.id.replace(/[^\d]/g, '');
+            const newStoreBtn = copy.map((elem, index) => {
+              if (index === +id) {
+                return true;
+              }
+              return false;
+            });
+            return newStoreBtn;
+          });
         }
         return newStore;
       }
@@ -55,8 +78,23 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
     changePage((store) => {
       if (+store !== numberPage) {
         const newStore = +store + 1;
+        onBtn((storeBtn) => {
+          const copy = [...storeBtn];
+          const newStoreBtn = copy.map(() => false);
+          return newStoreBtn;
+        });
         if (+store === numberPage - 1) {
-          event.target.disabled = true;
+          onBtn((storeBtn) => {
+            const copy = [...storeBtn];
+            const id = event.target.id.replace(/[^\d]/g, '');
+            const newStoreBtn = copy.map((elem, index) => {
+              if (index === +id) {
+                return true;
+              }
+              return false;
+            });
+            return newStoreBtn;
+          });
         }
         return newStore;
       }
@@ -80,6 +118,8 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
         className="pagination-btn left"
         type="button"
         onClick={onGoPrevPage}
+        disabled={btn[0]}
+        id="btn0"
       >
         &#8592;
       </button>
@@ -100,6 +140,8 @@ const Pagination = ({ num, changeNum, page, changePage, total }) => {
         className="pagination-btn right"
         type="button"
         onClick={onGoNextPage}
+        disabled={btn[1]}
+        id="btn1"
       >
         &#8594;
       </button>

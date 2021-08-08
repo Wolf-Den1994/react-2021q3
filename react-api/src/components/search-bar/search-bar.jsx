@@ -3,15 +3,18 @@ import './search-bar.scss';
 
 const SearchBar = ({ onSearch, onLoading }) => {
   const [valueSearch, setValueSearch] = useState('');
+  const [disabledBtn, setDisabledBtn] = useState(true);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     onSearch(valueSearch);
+    setDisabledBtn(true);
     onLoading(true);
   };
 
   const onChangeValueSearch = (event) => {
     setValueSearch(event.target.value);
+    setDisabledBtn(false);
   };
 
   return (
@@ -25,9 +28,15 @@ const SearchBar = ({ onSearch, onLoading }) => {
           type="text"
           id="search"
           placeholder="Search-bar"
+          title="Search-bar"
           onChange={onChangeValueSearch}
         />
-        <button className="search-btn" aria-label="search" type="submit" />
+        <button
+          className="search-btn"
+          aria-label="search"
+          type="submit"
+          disabled={disabledBtn}
+        />
       </form>
     </div>
   );
