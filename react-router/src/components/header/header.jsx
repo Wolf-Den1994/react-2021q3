@@ -1,29 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './header.scss';
 
-const Header = ({ active, onActive }) => {
+const Header = () => {
   return (
     <header className="header">
       <nav>
         <ul>
           <li>
-            <Link
-              className={`page0 ${active[0] ? 'active-link' : ''}`}
-              to="/"
-              onClick={onActive}
-            >
+            <NavLink exact activeClassName="active-link" to="/">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link
-              className={`page1 ${active[1] ? 'active-link' : ''}`}
-              to="/about"
-              onClick={onActive}
-            >
+            <NavLink exact activeClassName="active-link" to="/about">
               About
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>
