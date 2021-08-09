@@ -2,16 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.scss';
 
-const Header = () => {
+const Header = ({ active, onActive }) => {
   return (
     <header className="header">
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link
+              className={`page0 ${active[0] ? 'active-link' : ''}`}
+              to="/"
+              onClick={onActive}
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link
+              className={`page1 ${active[1] ? 'active-link' : ''}`}
+              to="/about"
+              onClick={onActive}
+            >
+              About
+            </Link>
           </li>
         </ul>
       </nav>
