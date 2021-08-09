@@ -4,6 +4,7 @@ import Home from '../home/home';
 import Header from '../header/header';
 import About from '../about/about';
 import NotFound from '../not-found/not-found';
+import Details from '../details/details';
 
 const App = () => {
   return (
@@ -17,6 +18,14 @@ const App = () => {
           <Route path="/about">
             <About />
           </Route>
+          <Route
+            path="/details/:q/:id"
+            render={({ match }) => {
+              const id = match.params;
+              const q = match.params;
+              return <Details match={(id, q)} />;
+            }}
+          />
           <Route>
             <NotFound />
           </Route>

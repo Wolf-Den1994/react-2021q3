@@ -20,4 +20,16 @@ export default class NewsServise {
     }
     return {};
   }
+
+  async getResourseById(q) {
+    const response = await fetch(`
+      ${this.apiBase}?q=${q}&sortBy=popularity&apiKey=${this.apiKey}&pageSize=100&page=1`);
+
+    if (!response.ok) {
+      throw new Error(`Could not fetch ${q}, status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  }
 }
