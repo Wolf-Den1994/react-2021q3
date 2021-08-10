@@ -1,0 +1,33 @@
+.page {
+  position: absolute;
+}
+
+.page-enter-active {
+  animation: fade-in 0.3s forwards;
+}
+
+.page-exit-active {
+  animation: fade-out 0.3s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
