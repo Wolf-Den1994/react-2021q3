@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import NewsServise from '../../services/new-service';
-import Card from '../card/card';
-import './details.scss';
+import DetailCard from '../detail-card/detail-card';
 
-const Details = ({ match }) => {
+const Details = ({ sort, match }) => {
   const [data, setDate] = useState({});
 
   const newsServise = new NewsServise();
   useEffect(() => {
     newsServise
-      .getResourseById(match.q)
+      .getResourseById(match.q, sort)
       .then((response) => {
         if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
           const result = response.articles.find(
-            (el, index) => +match.id - 1 === index,
+            (el, index) => +match.id === index,
           );
           const obj = {
             articles: [result],
@@ -26,8 +25,7 @@ const Details = ({ match }) => {
 
   return (
     <div className="details-page">
-      <h2>Details</h2>
-      {!Object.keys(data).length ? <></> : <Card data={data} />}
+      {!Object.keys(data).length ? <></> : <DetailCard data={data} />}
     </div>
   );
 };

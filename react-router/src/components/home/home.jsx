@@ -6,11 +6,9 @@ import Pagination from '../pagination/pagination';
 import Spinner from '../spinner/spinner';
 import SearchBar from '../search-bar/search-bar';
 
-const Home = () => {
+const Home = ({ sort, setSort, searchString, setSearchString }) => {
   const newsServise = new NewsServise();
 
-  const [sort, setSort] = useState('popularity');
-  const [searchString, setSearchString] = useState('');
   const [data, setDate] = useState({});
   const [numberResult, setNumberResult] = useState(10);
   const [page, setPage] = useState(1);
@@ -23,7 +21,15 @@ const Home = () => {
     newsServise
       .getResourse(searchString, sort, numberResult, page)
       .then((response) => {
-        setDate(response);
+        if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
+          const addId = response.articles.map((el, index) => {
+            return { ...el, id: index + numberResult * (page - 1) };
+          });
+          const objData = {
+            articles: addId,
+          };
+          setDate(objData);
+        }
         setTotalResults(response.totalResults);
         if (Object.keys(response).length) setLoading(false);
         if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
@@ -37,7 +43,7 @@ const Home = () => {
       .catch((e) => console.error('Error: ', e));
   }, [searchString, sort, numberResult, page, loading, empty]);
 
-  const main = loading ? <Spinner /> : <Card data={data} />;
+  const main = loading ? <Spinner /> : <Card q={searchString} data={data} />;
 
   const emptySort = empty ? (
     <Sort sortBy={sort} onSortBy={setSort} />

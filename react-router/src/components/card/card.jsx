@@ -1,12 +1,19 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './card.scss';
 
-const Card = ({ data }) => {
+const Card = ({ data, q }) => {
   const { articles } = data;
   const elements = articles.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');
     return (
-      <div className="card" key={elem.url}>
+      <NavLink
+        to={`/details/${q}/${elem.id}`}
+        className="card"
+        id={elem.id}
+        key={elem.id}
+        style={{ textDecoration: 'none', color: '#000' }}
+      >
         <img className="image" src={elem.urlToImage} alt={elem.title} />
         <div className="title">{elem.title}</div>
         <div className="description">{elem.description}</div>
@@ -19,11 +26,8 @@ const Card = ({ data }) => {
             <b>Source: </b>
             {elem.source.name}
           </span>
-          <a className="link" href={elem.url} target="_blank" rel="noreferrer">
-            Link
-          </a>
         </div>
-      </div>
+      </NavLink>
     );
   });
   return <div className="cards">{elements}</div>;

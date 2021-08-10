@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../home/home';
 import Header from '../header/header';
@@ -7,13 +7,21 @@ import NotFound from '../not-found/not-found';
 import Details from '../details/details';
 
 const App = () => {
+  const [sort, setSort] = useState('popularity');
+  const [searchString, setSearchString] = useState('');
+
   return (
     <Router>
       <Header />
       <div className="app-wrapper">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home
+              sort={sort}
+              setSort={setSort}
+              searchString={searchString}
+              setSearchString={setSearchString}
+            />
           </Route>
           <Route path="/about">
             <About />
@@ -23,7 +31,7 @@ const App = () => {
             render={({ match }) => {
               const id = match.params;
               const q = match.params;
-              return <Details match={(id, q)} />;
+              return <Details match={(id, q)} sort={sort} />;
             }}
           />
           <Route>

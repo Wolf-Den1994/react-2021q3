@@ -21,9 +21,9 @@ export default class NewsServise {
     return {};
   }
 
-  async getResourseById(q) {
+  async getResourseById(q, sort) {
     const response = await fetch(`
-      ${this.apiBase}?q=${q}&sortBy=popularity&apiKey=${this.apiKey}&pageSize=100&page=1`);
+      ${this.apiBase}?q=${q}&sortBy=${sort}&apiKey=${this.apiKey}&pageSize=100&page=1`);
 
     if (!response.ok) {
       throw new Error(`Could not fetch ${q}, status: ${response.status}`);
