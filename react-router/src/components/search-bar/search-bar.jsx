@@ -7,9 +7,11 @@ const SearchBar = ({ onSearch, onLoading }) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    onSearch(valueSearch);
-    setDisabledBtn(true);
-    onLoading(true);
+    if (valueSearch) {
+      onSearch(valueSearch);
+      setDisabledBtn(true);
+      onLoading(true);
+    }
   };
 
   const onChangeValueSearch = (event) => {
