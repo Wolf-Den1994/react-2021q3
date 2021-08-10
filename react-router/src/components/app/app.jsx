@@ -40,17 +40,6 @@ const App = () => {
             )}
           </Route>
         ))}
-        {/* <Route exact path="/">
-          <Home
-            sort={sort}
-            setSort={setSort}
-            searchString={searchString}
-            setSearchString={setSearchString}
-          />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route> */}
         <Route
           path="/details/:q/:id"
           render={({ match }) => {
