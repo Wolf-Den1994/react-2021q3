@@ -40,14 +40,9 @@ const App = () => {
             )}
           </Route>
         ))}
-        <Route
-          path="/details/:q/:id"
-          render={({ match }) => {
-            const id = match.params;
-            const q = match.params;
-            return <Details match={(id, q)} sort={sort} />;
-          }}
-        />
+        <Route path="/details/:id">
+          <Details sort={sort} />
+        </Route>
         <Route exact path="/404" component={NotFound} />
         {window.location.pathname !== '/' &&
         window.location.pathname !== '/about' &&

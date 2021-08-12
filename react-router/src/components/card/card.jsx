@@ -8,7 +8,7 @@ const Card = ({ data, q }) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');
     return (
       <NavLink
-        to={`/details/${q}/${elem.id}`}
+        to={`/details/${elem.id}?q=${q}`}
         className="card"
         id={elem.id}
         key={elem.id}
