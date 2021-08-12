@@ -14,6 +14,7 @@ const Details = ({ sort }) => {
 
   const newsServise = new NewsServise();
   useEffect(() => {
+    setLoading(true);
     newsServise
       .getResourseById(q, sort)
       .then((response) => {
@@ -24,20 +25,18 @@ const Details = ({ sort }) => {
           };
           setDate(obj);
         }
-        if (Object.keys(response).length) setLoading(false);
       })
-      .catch((e) => console.error('Error: ', e));
-    return () => {
-      setDate({});
-      setLoading(true);
-    };
+      .catch((e) => console.error('Error: ', e))
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
 
   const main = loading ? <Spinner /> : <DetailCard data={data} />;
 
   return (
     <div className="details-page">
-      {!Object.keys(data).length ? <></> : main}
+      {!Object.keys(data).length && !loading ? <></> : main}
     </div>
   );
 };
