@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Route, Redirect } from 'react-router-dom';
-import { routes } from '../router';
+import { routes } from '../../router';
 
 const AppRouter = () => {
   const [sort, setSort] = useState('popularity');
