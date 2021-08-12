@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './card.scss';
+import './Card.scss';
 
 const Card = ({ data, q }) => {
   const { articles } = data;

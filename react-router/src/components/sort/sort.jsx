@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './sort.scss';
+import './Sort.scss';
 
 const Sort = ({ onSortBy }) => {
   const [activeBtn, setActiveBtn] = useState([false, true, false]);

@@ -1,7 +1,7 @@
-import Home from '../components/home/home';
-import About from '../components/about/about';
-import Details from '../components/details/details';
-import NotFound from '../components/not-found/not-found';
+import Home from '../pages/Home/Home';
+import About from '../pages/About/About';
+import Details from '../pages/Details/Details';
+import NotFound from '../pages/NotFound/NotFound';
 
 export const routes = [
   { path: '/', Component: Home },

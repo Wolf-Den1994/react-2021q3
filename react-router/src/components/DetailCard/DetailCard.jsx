@@ -1,5 +1,5 @@
 import React from 'react';
-import './detail-card.scss';
+import './DetailCard.scss';
 
 const DetailCard = ({ data }) => {
   const { articles } = data;

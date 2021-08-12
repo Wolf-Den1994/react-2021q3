@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import queryString from 'query-string';
 import NewsServise from '../../services/new-service';
-import DetailCard from '../detail-card/detail-card';
-import Spinner from '../spinner/spinner';
+import DetailCard from '../../components/DetailCard/DetailCard';
+import Spinner from '../../components/Spinner/Spinner';
 
 const Details = ({ sort }) => {
   const { search } = useLocation();

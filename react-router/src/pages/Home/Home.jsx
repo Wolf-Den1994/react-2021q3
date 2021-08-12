@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import NewsServise from '../../services/new-service';
-import Card from '../card/card';
-import Sort from '../sort/sort';
-import Pagination from '../pagination/pagination';
-import Spinner from '../spinner/spinner';
-import SearchBar from '../search-bar/search-bar';
+import Card from '../../components/Card/Card';
+import Sort from '../../components/Sort/Sort';
+import Pagination from '../../components/Pagination/Pagination';
+import Spinner from '../../components/Spinner/Spinner';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 const Home = ({ sort, setSort, searchString, setSearchString }) => {
   const newsServise = new NewsServise();

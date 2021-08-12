@@ -1,5 +1,5 @@
 import React from 'react';
-import './pagination.scss';
+import './Pagination.scss';
 
 const Pagination = ({
   num,
