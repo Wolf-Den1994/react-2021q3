@@ -10,10 +10,10 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 const Home = () => {
   const sort = useSelector((state) => state.sort.sort);
   const searchString = useSelector((state) => state.searchString.searchString);
+  const numberResult = useSelector((state) => state.numberResult.numberResult);
   const newsServise = new NewsServise();
 
   const [data, setDate] = useState({});
-  const [numberResult, setNumberResult] = useState(10);
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState();
   const [loading, setLoading] = useState(false);
@@ -58,8 +58,6 @@ const Home = () => {
 
   const emptyPagination = empty ? (
     <Pagination
-      num={numberResult}
-      changeNum={setNumberResult}
       page={page}
       changePage={setPage}
       total={totalResults}

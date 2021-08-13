@@ -1,15 +1,17 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeNumberResultAction } from '../../store/numberResultReducer';
 import './Pagination.scss';
 
 const Pagination = ({
-  num,
-  changeNum,
   page,
   changePage,
   total,
   btn,
   onBtn,
 }) => {
+  const num = useSelector((state) => state.numberResult.numberResult);
+  const dispatch = useDispatch();
   const maxRequestFromServer = 100;
   const optionsPage = [];
   const maxTotal = total > maxRequestFromServer ? maxRequestFromServer : total;
@@ -105,10 +107,10 @@ const Pagination = ({
   const onSelectNumResultHandler = (event) => {
     const numCardsOnPage = +event.target.value.replace(/[^\d]/g, '');
     if (page * numCardsOnPage - 1 < maxRequestFromServer) {
-      changeNum(numCardsOnPage);
+      dispatch(changeNumberResultAction(numCardsOnPage));
     } else {
       changePage(Math.floor(maxRequestFromServer / numCardsOnPage));
-      changeNum(numCardsOnPage);
+      dispatch(changeNumberResultAction(numCardsOnPage));
     }
   };
 
