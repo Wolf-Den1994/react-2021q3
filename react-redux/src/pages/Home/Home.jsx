@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import NewsServise from '../../services/new-service';
 import Card from '../../components/Card/Card';
 import Sort from '../../components/Sort/Sort';
@@ -6,7 +7,8 @@ import Pagination from '../../components/Pagination/Pagination';
 import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Home = ({ sort, setSort, searchString, setSearchString }) => {
+const Home = ({ searchString, setSearchString }) => {
+  const sort = useSelector((state) => state.sort.sort);
   const newsServise = new NewsServise();
 
   const [data, setDate] = useState({});
@@ -46,7 +48,7 @@ const Home = ({ sort, setSort, searchString, setSearchString }) => {
   const main = loading ? <Spinner /> : <Card q={searchString} data={data} />;
 
   const emptySort = empty ? (
-    <Sort sortBy={sort} onSortBy={setSort} />
+    <Sort />
   ) : (
     <p className="empty">
       No news for your request was found. Try another query.

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeSortAction } from '../../store/sortReducer';
 import './Sort.scss';
 
-const Sort = ({ onSortBy }) => {
+const Sort = () => {
+  const dispatch = useDispatch();
+
   const [activeBtn, setActiveBtn] = useState([false, true, false]);
 
   const changeSort = (event) => {
@@ -17,7 +21,7 @@ const Sort = ({ onSortBy }) => {
       });
       return newStore;
     });
-    onSortBy(target.id);
+    dispatch(changeSortAction(target.id));
     target.classList.add('active');
   };
 

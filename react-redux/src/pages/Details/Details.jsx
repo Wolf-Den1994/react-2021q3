@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import queryString from 'query-string';
 import NewsServise from '../../services/new-service';
 import DetailCard from '../../components/DetailCard/DetailCard';
 import Spinner from '../../components/Spinner/Spinner';
 
-const Details = ({ sort }) => {
+const Details = () => {
+  const sort = useSelector((state) => state.sort.sort);
   const { search } = useLocation();
   const { id } = useParams();
   const { q } = queryString.parse(search);
