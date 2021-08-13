@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Route, Redirect } from 'react-router-dom';
-
 import { routes } from '../../router';
 
 const AppRouter = () => {
-  const [searchString, setSearchString] = useState('');
-
   return (
     <div className="app-wrapper">
       {routes.map(({ path, Component }) => (
@@ -18,10 +15,7 @@ const AppRouter = () => {
               unmountOnExit
               in={match != null}
             >
-              <Component
-                searchString={searchString}
-                setSearchString={setSearchString}
-              />
+              <Component />
             </CSSTransition>
           )}
         </Route>

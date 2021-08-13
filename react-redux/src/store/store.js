@@ -1,11 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { sortReducer } from './sortReducer';
-import { customerReducer } from './arrayReducer';
+import { searchStringReducer } from './searchStringReducer';
 
 const rootReducer = combineReducers({
   sort: sortReducer,
-  customer: customerReducer,
+  searchString: searchStringReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools());

@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changeSearchStringAction } from '../../store/searchStringReducer';
 import './SearchBar.scss';
 
-const SearchBar = ({ onSearch, onLoading }) => {
+const SearchBar = ({ onLoading }) => {
+  const dispatch = useDispatch();
+
   const [valueSearch, setValueSearch] = useState('');
   const [disabledBtn, setDisabledBtn] = useState(true);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (valueSearch) {
-      onSearch(valueSearch);
+      dispatch(changeSearchStringAction(valueSearch));
       setDisabledBtn(true);
       onLoading(true);
     }

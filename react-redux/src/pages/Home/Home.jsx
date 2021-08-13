@@ -7,8 +7,9 @@ import Pagination from '../../components/Pagination/Pagination';
 import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
-const Home = ({ searchString, setSearchString }) => {
+const Home = () => {
   const sort = useSelector((state) => state.sort.sort);
+  const searchString = useSelector((state) => state.searchString.searchString);
   const newsServise = new NewsServise();
 
   const [data, setDate] = useState({});
@@ -70,7 +71,7 @@ const Home = ({ searchString, setSearchString }) => {
   );
   return (
     <>
-      <SearchBar onSearch={setSearchString} onLoading={setLoading} />
+      <SearchBar onLoading={setLoading} />
       {!Object.keys(data).length && !empty ? <></> : emptySort}
       {!Object.keys(data).length && !Object.keys(data).length && !loading ? (
         <></>
