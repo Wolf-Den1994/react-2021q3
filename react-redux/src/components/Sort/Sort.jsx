@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeActiveBtnSortAction } from '../../store/activeBtnSortReducer';
 import { changeSortAction } from '../../store/sortReducer';
 import './Sort.scss';
 
 const Sort = () => {
   const dispatch = useDispatch();
-
-  const [activeBtn, setActiveBtn] = useState([false, true, false]);
+  const activeBtn = useSelector((state) => state.activeBtnSort.activeBtnSort);
 
   const changeSort = (event) => {
     const { target } = event;
-    setActiveBtn((store) => {
+    const setActiveBtn = (store) => {
       const copy = [...store];
       const falsesStore = copy.map(() => false);
       const newStore = falsesStore.map((elem, index) => {
@@ -20,7 +20,8 @@ const Sort = () => {
         return elem;
       });
       return newStore;
-    });
+    };
+    dispatch(changeActiveBtnSortAction(setActiveBtn(activeBtn)));
     dispatch(changeSortAction(target.id));
     target.classList.add('active');
   };

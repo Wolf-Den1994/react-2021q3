@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeDisabledBtnSearchBarAction } from '../../store/disabledBtnSearchBar';
+import { changeLoadingAction } from '../../store/loadingReducer';
 import { changeSearchStringAction } from '../../store/searchStringReducer';
+import { changeValueSearchBarAction } from '../../store/valueSearchBar';
 import './SearchBar.scss';
 
-const SearchBar = ({ onLoading }) => {
+const SearchBar = () => {
   const dispatch = useDispatch();
-
-  const [valueSearch, setValueSearch] = useState('');
-  const [disabledBtn, setDisabledBtn] = useState(true);
+  const valueSearch = useSelector(
+    (state) => state.valueSearchBar.valueSearchBar,
+  );
+  const disabledBtn = useSelector(
+    (state) => state.disabledBtnSearchBar.disabledBtnSearchBar,
+  );
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (valueSearch) {
       dispatch(changeSearchStringAction(valueSearch));
-      setDisabledBtn(true);
-      onLoading(true);
+      dispatch(changeDisabledBtnSearchBarAction(true));
+      dispatch(changeLoadingAction(true));
     }
   };
 
   const onChangeValueSearch = (event) => {
-    setValueSearch(event.target.value);
-    setDisabledBtn(false);
+    dispatch(changeValueSearchBarAction(event.target.value));
+    dispatch(changeDisabledBtnSearchBarAction(false));
   };
 
   return (

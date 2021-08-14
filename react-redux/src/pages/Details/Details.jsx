@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import queryString from 'query-string';
 import NewsServise from '../../services/new-service';
 import DetailCard from '../../components/DetailCard/DetailCard';
 import Spinner from '../../components/Spinner/Spinner';
+import { changeDetailsDataAction } from '../../store/detailsDataReducer';
+import { changeLoadingDetailsAction } from '../../store/loadingForDetailsPageReducer';
 
 const Details = () => {
+  const dispatch = useDispatch();
   const sort = useSelector((state) => state.sort.sort);
+  const data = useSelector((state) => state.detailsData.detailsData);
+  const loading = useSelector((state) => state.loadingDetails.loadingDetails);
   const { search } = useLocation();
   const { id } = useParams();
   const { q } = queryString.parse(search);
-  const [data, setDate] = useState({});
-  const [loading, setLoading] = useState(true);
 
   const newsServise = new NewsServise();
   useEffect(() => {
-    setLoading(true);
+    dispatch(changeLoadingDetailsAction(true));
     newsServise
       .getResourseById(q, sort)
       .then((response) => {
@@ -25,16 +28,16 @@ const Details = () => {
           const obj = {
             articles: [result],
           };
-          setDate(obj);
+          dispatch(changeDetailsDataAction(obj));
         }
       })
       .catch((e) => console.error('Error: ', e))
       .finally(() => {
-        setLoading(false);
+        dispatch(changeLoadingDetailsAction(false));
       });
   }, []);
 
-  const main = loading ? <Spinner /> : <DetailCard data={data} />;
+  const main = loading ? <Spinner /> : <DetailCard />;
 
   return (
     <div className="details-page">

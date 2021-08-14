@@ -1,16 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { changeDisabledBtnAction } from '../../store/disabledBtnReducer';
 import { changeNumberResultAction } from '../../store/numberResultReducer';
+import { changePageAction } from '../../store/pageReducer';
 import './Pagination.scss';
 
-const Pagination = ({
-  page,
-  changePage,
-  total,
-  btn,
-  onBtn,
-}) => {
+const Pagination = () => {
+  const page = useSelector((state) => state.page.page);
   const num = useSelector((state) => state.numberResult.numberResult);
+  const total = useSelector((state) => state.totalResults.totalResults);
+  const btn = useSelector((state) => state.disabledBtn.disabledBtn);
   const dispatch = useDispatch();
   const maxRequestFromServer = 100;
   const optionsPage = [];
@@ -45,20 +44,21 @@ const Pagination = ({
   }
 
   const onSelectPageHandler = (event) => {
-    changePage(event.target.value);
+    dispatch(changePageAction(event.target.value));
   };
 
   const onGoPrevPage = (event) => {
-    changePage((store) => {
-      if (+store !== 1) {
-        const newStore = +store - 1;
-        onBtn((storeBtn) => {
+    const prevPage = () => {
+      if (+page !== 1) {
+        const newPage = +page - 1;
+        const falseBtn = (storeBtn) => {
           const copy = [...storeBtn];
           const newStoreBtn = copy.map(() => false);
           return newStoreBtn;
-        });
-        if (+store === 1 + 1) {
-          onBtn((storeBtn) => {
+        };
+        dispatch(changeDisabledBtnAction(falseBtn(btn)));
+        if (+page === 1 + 1) {
+          const onBtn = (storeBtn) => {
             const copy = [...storeBtn];
             const id = event.target.id.replace(/[^\d]/g, '');
             const newStoreBtn = copy.map((elem, index) => {
@@ -68,25 +68,28 @@ const Pagination = ({
               return false;
             });
             return newStoreBtn;
-          });
+          };
+          dispatch(changeDisabledBtnAction(onBtn(btn)));
         }
-        return newStore;
+        return newPage;
       }
-      return store;
-    });
+      return page;
+    };
+    dispatch(changePageAction(prevPage()));
   };
 
   const onGoNextPage = (event) => {
-    changePage((store) => {
-      if (+store !== numberPage) {
-        const newStore = +store + 1;
-        onBtn((storeBtn) => {
+    const nextPage = () => {
+      if (+page !== numberPage) {
+        const newPage = +page + 1;
+        const falseBtn = (storeBtn) => {
           const copy = [...storeBtn];
           const newStoreBtn = copy.map(() => false);
           return newStoreBtn;
-        });
-        if (+store === numberPage - 1) {
-          onBtn((storeBtn) => {
+        };
+        dispatch(changeDisabledBtnAction(falseBtn(btn)));
+        if (+page === numberPage - 1) {
+          const onBtn = (storeBtn) => {
             const copy = [...storeBtn];
             const id = event.target.id.replace(/[^\d]/g, '');
             const newStoreBtn = copy.map((elem, index) => {
@@ -96,12 +99,14 @@ const Pagination = ({
               return false;
             });
             return newStoreBtn;
-          });
+          };
+          dispatch(changeDisabledBtnAction(onBtn(btn)));
         }
-        return newStore;
+        return newPage;
       }
-      return store;
-    });
+      return page;
+    };
+    dispatch(changePageAction(nextPage()));
   };
 
   const onSelectNumResultHandler = (event) => {
@@ -109,7 +114,9 @@ const Pagination = ({
     if (page * numCardsOnPage - 1 < maxRequestFromServer) {
       dispatch(changeNumberResultAction(numCardsOnPage));
     } else {
-      changePage(Math.floor(maxRequestFromServer / numCardsOnPage));
+      dispatch(
+        changePageAction(Math.floor(maxRequestFromServer / numCardsOnPage)),
+      );
       dispatch(changeNumberResultAction(numCardsOnPage));
     }
   };

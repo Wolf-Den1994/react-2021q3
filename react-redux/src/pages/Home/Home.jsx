@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import NewsServise from '../../services/new-service';
 import Card from '../../components/Card/Card';
 import Sort from '../../components/Sort/Sort';
 import Pagination from '../../components/Pagination/Pagination';
 import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import { changeDataAction } from '../../store/dataReducer';
+import { changeTotalResultsAction } from '../../store/totalResultReducer';
+import { changeLoadingAction } from '../../store/loadingReducer';
+import { changeEmptyAction } from '../../store/emptyReducer';
 
 const Home = () => {
+  const newsServise = new NewsServise();
+  const dispatch = useDispatch();
   const sort = useSelector((state) => state.sort.sort);
   const searchString = useSelector((state) => state.searchString.searchString);
   const numberResult = useSelector((state) => state.numberResult.numberResult);
-  const newsServise = new NewsServise();
-
-  const [data, setDate] = useState({});
-  const [page, setPage] = useState(1);
-  const [totalResults, setTotalResults] = useState();
-  const [loading, setLoading] = useState(false);
-  const [empty, setEmpty] = useState(false);
-  const [disabledBtn, setDisabledBtn] = useState([true, false]);
+  const page = useSelector((state) => state.page.page);
+  const data = useSelector((state) => state.data.data);
+  const loading = useSelector((state) => state.loading.loading);
+  const empty = useSelector((state) => state.empty.empty);
 
   useEffect(() => {
     newsServise
@@ -31,22 +33,22 @@ const Home = () => {
           const objData = {
             articles: addId,
           };
-          setDate(objData);
+          dispatch(changeDataAction(objData));
         }
-        setTotalResults(response.totalResults);
-        if (Object.keys(response).length) setLoading(false);
+        dispatch(changeTotalResultsAction(response.totalResults));
+        if (Object.keys(response).length) dispatch(changeLoadingAction(false));
         if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
           if (Object.keys(response.articles).length) {
-            setEmpty(true);
+            dispatch(changeEmptyAction(true));
           } else {
-            setEmpty(false);
+            dispatch(changeEmptyAction(false));
           }
         }
       })
       .catch((e) => console.error('Error: ', e));
   }, [searchString, sort, numberResult, page, loading, empty]);
 
-  const main = loading ? <Spinner /> : <Card q={searchString} data={data} />;
+  const main = loading ? <Spinner /> : <Card q={searchString} />;
 
   const emptySort = empty ? (
     <Sort />
@@ -56,26 +58,12 @@ const Home = () => {
     </p>
   );
 
-  const emptyPagination = empty ? (
-    <Pagination
-      page={page}
-      changePage={setPage}
-      total={totalResults}
-      btn={disabledBtn}
-      onBtn={setDisabledBtn}
-    />
-  ) : (
-    <></>
-  );
+  const emptyPagination = empty ? <Pagination /> : <></>;
   return (
     <>
-      <SearchBar onLoading={setLoading} />
+      <SearchBar />
       {!Object.keys(data).length && !empty ? <></> : emptySort}
-      {!Object.keys(data).length && !Object.keys(data).length && !loading ? (
-        <></>
-      ) : (
-        main
-      )}
+      {!Object.keys(data).length && !loading ? <></> : main}
       {!Object.keys(data).length && !empty ? <></> : emptyPagination}
     </>
   );

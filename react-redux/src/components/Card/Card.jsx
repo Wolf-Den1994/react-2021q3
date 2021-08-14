@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './Card.scss';
 
-const Card = ({ data, q }) => {
+const Card = ({ q }) => {
+  const data = useSelector((state) => state.data.data);
   const { articles } = data;
   const elements = articles.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');
