@@ -16,10 +16,10 @@ import {
 const Home = () => {
   const newsServise = new NewsServise();
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.sort.sort);
-  const searchString = useSelector((state) => state.searchString.searchString);
-  const numberResult = useSelector((state) => state.numberResult.numberResult);
-  const page = useSelector((state) => state.page.page);
+  const sort = useSelector((state) => state.control.sort);
+  const searchString = useSelector((state) => state.searchBar.searchString);
+  const numberResult = useSelector((state) => state.control.numberResult);
+  const page = useSelector((state) => state.control.page);
   const data = useSelector((state) => state.home.data);
   const loading = useSelector((state) => state.home.loading);
   const empty = useSelector((state) => state.home.empty);
@@ -50,7 +50,7 @@ const Home = () => {
       .catch((e) => console.error('Error: ', e));
   }, [searchString, sort, numberResult, page, loading, empty]);
 
-  const main = loading ? <Spinner /> : <Card q={searchString} />;
+  const main = loading ? <Spinner /> : <Card />;
 
   const emptySort = empty ? (
     <Sort />

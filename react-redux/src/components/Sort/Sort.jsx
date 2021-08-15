@@ -1,12 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeActiveBtnSortAction } from '../../store/activeBtnSortReducer';
-import { changeSortAction } from '../../store/sortReducer';
+import {
+  changeSortAction,
+  changeActiveBtnSortAction,
+} from '../../store/controlReducer';
 import './Sort.scss';
 
 const Sort = () => {
   const dispatch = useDispatch();
-  const activeBtn = useSelector((state) => state.activeBtnSort.activeBtnSort);
+  const activeBtn = useSelector((state) => state.control.activeBtnSort);
 
   const changeSort = (event) => {
     const { target } = event;

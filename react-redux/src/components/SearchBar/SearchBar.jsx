@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeDisabledBtnSearchBarAction } from '../../store/disabledBtnSearchBar';
 import { changeLoadingAction } from '../../store/homeReducer';
-import { changeSearchStringAction } from '../../store/searchStringReducer';
-import { changeValueSearchBarAction } from '../../store/valueSearchBar';
+import {
+  changeValueSearchBarAction,
+  changeSearchStringAction,
+  changeDisabledBtnSearchBarAction,
+} from '../../store/searchBarReducer';
 import './SearchBar.scss';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const valueSearch = useSelector(
-    (state) => state.valueSearchBar.valueSearchBar,
-  );
+  const valueSearch = useSelector((state) => state.searchBar.valueSearchBar);
   const disabledBtn = useSelector(
-    (state) => state.disabledBtnSearchBar.disabledBtnSearchBar,
+    (state) => state.searchBar.disabledBtnSearchBar,
   );
 
   const onSubmitHandler = (event) => {

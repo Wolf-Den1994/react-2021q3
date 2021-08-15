@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './Card.scss';
 
-const Card = ({ q }) => {
+const Card = () => {
+  const q = useSelector((state) => state.searchBar.searchString);
   const data = useSelector((state) => state.home.data);
   const { articles } = data;
   const elements = articles.map((elem) => {

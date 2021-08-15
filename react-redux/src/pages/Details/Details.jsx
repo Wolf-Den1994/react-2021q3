@@ -12,7 +12,7 @@ import {
 
 const Details = () => {
   const dispatch = useDispatch();
-  const sort = useSelector((state) => state.sort.sort);
+  const sort = useSelector((state) => state.control.sort);
   const data = useSelector((state) => state.details.data);
   const loading = useSelector((state) => state.details.loading);
   const { search } = useLocation();

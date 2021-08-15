@@ -1,15 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeDisabledBtnAction } from '../../store/disabledBtnReducer';
-import { changeNumberResultAction } from '../../store/numberResultReducer';
-import { changePageAction } from '../../store/pageReducer';
+import {
+  changePageAction,
+  changeNumberResultAction,
+  changeDisabledBtnAction,
+} from '../../store/controlReducer';
 import './Pagination.scss';
 
 const Pagination = () => {
-  const page = useSelector((state) => state.page.page);
-  const num = useSelector((state) => state.numberResult.numberResult);
+  const page = useSelector((state) => state.control.page);
+  const num = useSelector((state) => state.control.numberResult);
   const total = useSelector((state) => state.home.totalResults);
-  const btn = useSelector((state) => state.disabledBtn.disabledBtn);
+  const btn = useSelector((state) => state.control.disabledBtn);
   const dispatch = useDispatch();
   const maxRequestFromServer = 100;
   const optionsPage = [];
