@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeDisabledBtnSearchBarAction } from '../../store/disabledBtnSearchBar';
-import { changeLoadingAction } from '../../store/loadingReducer';
+import { changeLoadingAction } from '../../store/homeReducer';
 import { changeSearchStringAction } from '../../store/searchStringReducer';
 import { changeValueSearchBarAction } from '../../store/valueSearchBar';
 import './SearchBar.scss';

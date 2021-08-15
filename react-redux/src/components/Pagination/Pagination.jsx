@@ -8,7 +8,7 @@ import './Pagination.scss';
 const Pagination = () => {
   const page = useSelector((state) => state.page.page);
   const num = useSelector((state) => state.numberResult.numberResult);
-  const total = useSelector((state) => state.totalResults.totalResults);
+  const total = useSelector((state) => state.home.totalResults);
   const btn = useSelector((state) => state.disabledBtn.disabledBtn);
   const dispatch = useDispatch();
   const maxRequestFromServer = 100;

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Card.scss';
 
 const Card = ({ q }) => {
-  const data = useSelector((state) => state.data.data);
+  const data = useSelector((state) => state.home.data);
   const { articles } = data;
   const elements = articles.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');

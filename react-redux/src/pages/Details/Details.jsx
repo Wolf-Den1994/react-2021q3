@@ -5,14 +5,16 @@ import queryString from 'query-string';
 import NewsServise from '../../services/new-service';
 import DetailCard from '../../components/DetailCard/DetailCard';
 import Spinner from '../../components/Spinner/Spinner';
-import { changeDetailsDataAction } from '../../store/detailsDataReducer';
-import { changeLoadingDetailsAction } from '../../store/loadingForDetailsPageReducer';
+import {
+  changeDetailsDataAction,
+  changeLoadingDetailsAction,
+} from '../../store/detailsReducer';
 
 const Details = () => {
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.sort.sort);
-  const data = useSelector((state) => state.detailsData.detailsData);
-  const loading = useSelector((state) => state.loadingDetails.loadingDetails);
+  const data = useSelector((state) => state.details.data);
+  const loading = useSelector((state) => state.details.loading);
   const { search } = useLocation();
   const { id } = useParams();
   const { q } = queryString.parse(search);

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './DetailCard.scss';
 
 const DetailCard = () => {
-  const data = useSelector((state) => state.detailsData.detailsData);
+  const data = useSelector((state) => state.details.data);
   const { articles } = data;
   const element = articles.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');

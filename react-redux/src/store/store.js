@@ -5,29 +5,21 @@ import { sortReducer } from './sortReducer';
 import { searchStringReducer } from './searchStringReducer';
 import { numberResultReducer } from './numberResultReducer';
 import { pageReducer } from './pageReducer';
-import { dataReducer } from './dataReducer';
-import { totalResultsReducer } from './totalResultReducer';
-import { loadingReducer } from './loadingReducer';
-import { emptyReducer } from './emptyReducer';
+import { homeReducer } from './homeReducer';
 import { disabledBtnReducer } from './disabledBtnReducer';
-import { detailsDataReducer } from './detailsDataReducer';
-import { loadingDetailsReducer } from './loadingForDetailsPageReducer';
 import { valueSearchBarReducer } from './valueSearchBar';
 import { disabledBtnSearchBarReducer } from './disabledBtnSearchBar';
 import { activeBtnSortReducer } from './activeBtnSortReducer';
+import { detailsReducer } from './detailsReducer';
 
 const rootReducer = combineReducers({
+  home: homeReducer,
   sort: sortReducer,
   searchString: searchStringReducer,
   numberResult: numberResultReducer,
   page: pageReducer,
-  data: dataReducer,
-  totalResults: totalResultsReducer,
-  loading: loadingReducer,
-  empty: emptyReducer,
   disabledBtn: disabledBtnReducer,
-  detailsData: detailsDataReducer,
-  loadingDetails: loadingDetailsReducer,
+  details: detailsReducer,
   valueSearchBar: valueSearchBarReducer,
   disabledBtnSearchBar: disabledBtnSearchBarReducer,
   activeBtnSort: activeBtnSortReducer,
