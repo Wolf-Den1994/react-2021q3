@@ -8,7 +8,8 @@
     "dev": "webpack serve --env development",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lintfix": "npm run lint -- --fix",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,scss,css,json}\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx,scss,css,json}\"",
+    "test": "jest --watchAll"
   },
   "author": "Denis Karazan",
   "license": "ISC",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
+    "jest": "^27.0.6",
     "query-string": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
