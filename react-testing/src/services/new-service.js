@@ -1,3 +1,5 @@
+import "babel-polyfill"
+
 export default class NewsServise {
   constructor() {
     this.apiBase = 'https://newsapi.org/v2/everything';

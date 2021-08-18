@@ -4,6 +4,8 @@ import AppRouter from '../AppRouter/AppRouter';
 import Header from '../Header/Header';
 import './App.scss';
 
+export const add = (x, y) => x + y;
+
 const App = () => {
   return (
     <Router>

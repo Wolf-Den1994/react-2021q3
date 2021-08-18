@@ -1,5 +1,8 @@
+import { add } from './App';
+
 // eslint-disable-next-line no-undef
-test('Face test', () => {
+test('add test', () => {
+  const value = add(1, 2);
   // eslint-disable-next-line no-undef
-  expect(true).toBeTruthy();
+  expect(value).toBe(3);
 });
