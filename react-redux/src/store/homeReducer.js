@@ -1,3 +1,5 @@
+import NewsServise from '../services/new-service';
+
 const defaultState = {
   data: {},
   totalResults: null,
@@ -48,3 +50,33 @@ export const changeEmptyAction = (payload) => ({
   type: CHANGE_EMPTY,
   payload,
 });
+
+export const fetchDataForHome = (searchString, sort, numberResult, page) => {
+  const data = (dispatch) => {
+    const newsServise = new NewsServise();
+    return newsServise
+      .getResourse(searchString, sort, numberResult, page)
+      .then((response) => {
+        if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
+          const addId = response.articles.map((el, index) => {
+            return { ...el, id: index + numberResult * (page - 1) };
+          });
+          const objData = {
+            articles: addId,
+          };
+          dispatch(changeDataAction(objData));
+        }
+        dispatch(changeTotalResultsAction(response.totalResults));
+        if (Object.keys(response).length) dispatch(changeLoadingAction(false));
+        if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
+          if (Object.keys(response.articles).length) {
+            dispatch(changeEmptyAction(true));
+          } else {
+            dispatch(changeEmptyAction(false));
+          }
+        }
+      })
+      .catch((e) => console.error('Error: ', e));
+  };
+  return data;
+};

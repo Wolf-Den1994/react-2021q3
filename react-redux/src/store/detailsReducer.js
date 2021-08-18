@@ -1,3 +1,5 @@
+import NewsServise from '../services/new-service';
+
 const defaultState = {
   data: {},
   loading: true,
@@ -28,3 +30,26 @@ export const changeLoadingDetailsAction = (payload) => ({
   type: CHANGE_LOADING_DETAILS,
   payload,
 });
+
+export function fetchDataForDetails(q, sort, id) {
+  const data = (dispatch) => {
+    const newsServise = new NewsServise();
+    dispatch(changeLoadingDetailsAction(true));
+    newsServise
+      .getResourseById(q, sort)
+      .then((response) => {
+        if (Object.prototype.hasOwnProperty.call(response, 'articles')) {
+          const result = response.articles.find((el, index) => +id === index);
+          const obj = {
+            articles: [result],
+          };
+          dispatch(changeDetailsDataAction(obj));
+        }
+      })
+      .catch((e) => console.error('Error: ', e))
+      .finally(() => {
+        dispatch(changeLoadingDetailsAction(false));
+      });
+  };
+  return data;
+}
