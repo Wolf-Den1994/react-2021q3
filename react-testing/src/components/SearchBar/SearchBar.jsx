@@ -32,7 +32,7 @@ const SearchBar = () => {
   return (
     <div className="search">
       <form action="GET" className="search-form" onSubmit={onSubmitHandler}>
-        <label htmlFor="search" className="search-label">
+        <label htmlFor="search" className="search-label" data-testid="search">
           Search
         </label>
         <input
