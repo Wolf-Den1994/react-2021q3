@@ -6,6 +6,10 @@ import './App.scss';
 
 export const add = (x, y) => x + y;
 
+export const total = (subTotal, t) => {
+  return `$${add(subTotal, t)}`;
+};
+
 const App = () => {
   return (
     <Router>

@@ -1,8 +1,11 @@
-import { add } from './App';
+import { add, total } from './App';
+/* eslint-disable no-undef */
 
-// eslint-disable-next-line no-undef
 test('add test', () => {
-  const value = add(1, 2);
-  // eslint-disable-next-line no-undef
-  expect(value).toBe(3);
+  expect(add(1, 2)).toBe(3);
+  expect(add(4, 2)).toBe(6);
+});
+
+test('total', () => {
+  expect(total(4, 5)).toBe('$9');
 });
