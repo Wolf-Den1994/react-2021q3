@@ -1,11 +1,17 @@
-import { add, total } from './App';
-/* eslint-disable no-undef */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from '../../store/store';
+import App from './App';
 
-test('add test', () => {
-  expect(add(1, 2)).toBe(3);
-  expect(add(4, 2)).toBe(6);
-});
-
-test('total', () => {
-  expect(total(4, 5)).toBe('$9');
+// eslint-disable-next-line no-undef
+it('render without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(
+    // eslint-disable-next-line react/jsx-filename-extension
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    div,
+  );
 });

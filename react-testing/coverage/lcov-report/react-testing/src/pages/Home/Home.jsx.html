@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.55% </span>
+                <span class="strong">95.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/22</span>
+                <span class='fraction'>21/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>12/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.89% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.67% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,31 +112,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,37 +156,37 @@ import Spinner from '../../components/Spinner/Spinner';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { fetchDataForHome } from '../../store/homeReducer';
 &nbsp;
-const Home = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
-  const sort = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.control.sort)</span>;</span>
-  const searchString = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.searchBar.searchString)</span>;</span>
-  const numberResult = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.control.numberResult)</span>;</span>
-  const page = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.control.page)</span>;</span>
-  const data = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.home.data)</span>;</span>
-  const loading = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.home.loading)</span>;</span>
-  const empty = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.home.empty)</span>;</span>
+const Home = () =&gt; {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) =&gt; state.control.sort);
+  const searchString = useSelector((state) =&gt; state.searchBar.searchString);
+  const numberResult = useSelector((state) =&gt; state.control.numberResult);
+  const page = useSelector((state) =&gt; state.control.page);
+  const data = useSelector((state) =&gt; state.home.data);
+  const loading = useSelector((state) =&gt; state.home.loading);
+  const empty = useSelector((state) =&gt; state.home.empty);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(fetchDataForHome(searchString, sort, numberResult, page));</span>
   }, [searchString, sort, numberResult, page, loading, empty]);
 &nbsp;
-  const main = <span class="cstat-no" title="statement not covered" >loading ? &lt;Spinner /&gt; : &lt;Card /&gt;;</span>
+  const main = loading ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;Spinner /&gt; </span>: &lt;Card /&gt;;
 &nbsp;
-  const emptySort = <span class="cstat-no" title="statement not covered" >empty ? (</span>
-    &lt;Sort /&gt;
+  const emptySort = empty ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >    &lt;Sort /&gt;</span>
   ) : (
     &lt;p className="empty"&gt;
       No news for your request was found. Try another query.
     &lt;/p&gt;
   );
 &nbsp;
-  const emptyPagination = <span class="cstat-no" title="statement not covered" >empty ? &lt;Pagination /&gt; : &lt;&gt;&lt;/&gt;;</span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  const emptyPagination = empty ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;Pagination /&gt; </span>: &lt;&gt;&lt;/&gt;;
+  return (
     &lt;&gt;
       &lt;SearchBar /&gt;
-      {!Object.keys(data).length &amp;&amp; !empty ? &lt;&gt;&lt;/&gt; : emptySort}
-      {!Object.keys(data).length &amp;&amp; !loading ? &lt;&gt;&lt;/&gt; : main}
-      {!Object.keys(data).length &amp;&amp; !empty ? &lt;&gt;&lt;/&gt; : emptyPagination}
+      {!Object.keys(data).length &amp;&amp; !empty ? &lt;&gt;&lt;/&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >emptySort}</span>
+      {!Object.keys(data).length &amp;&amp; !loading ? &lt;&gt;&lt;/&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >main}</span>
+      {!Object.keys(data).length &amp;&amp; !empty ? &lt;&gt;&lt;/&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >emptyPagination}</span>
     &lt;/&gt;
   );
 };
@@ -199,7 +199,7 @@ export default Home;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 18 2021 20:49:16 GMT+0300 (GMT+03:00)
+                at Thu Aug 19 2021 12:32:21 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
