@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -94,23 +94,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,32 +122,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { Route, Redirect } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { routes } from '../../router';
 &nbsp;
+export const LocationDisplay = () =&gt; {
+  const location = useLocation();
+&nbsp;
+  return &lt;div data-testid="location-display"&gt;{location.pathname}&lt;/div&gt;;
+};
+&nbsp;
 const AppRouter = () =&gt; {
+  const location = useLocation();
+&nbsp;
   return (
     &lt;div className="app-wrapper"&gt;
-      {routes.map(({ path, Component }) =&gt; (
-        &lt;Route key={path} exact path={path}&gt;
-          {({ match }) =&gt; (
-            &lt;CSSTransition
-              timeout={300}
-              classNames="page"
-              unmountOnExit
-              in={match != null}
-            &gt;
-              &lt;Component /&gt;
-            &lt;/CSSTransition&gt;
-          )}
-        &lt;/Route&gt;
-      ))}
-      {window.location.pathname !== '/' &amp;&amp;
-<span class="branch-1 cbranch-no" title="branch not covered" >      window.location.pathname !== '/about' </span>&amp;&amp;
-<span class="branch-2 cbranch-no" title="branch not covered" >      window.location.pathname.split('/')[1] !== 'details' </span>? (
-<span class="branch-0 cbranch-no" title="branch not covered" >        &lt;Redirect to="/404" /&gt;</span>
-      ) : null}
+      &lt;TransitionGroup&gt;
+        &lt;CSSTransition timeout={300} classNames="page" key={location.key}&gt;
+          &lt;Switch location={location}&gt;
+            {routes.map(({ path, Component, exact }) =&gt; (
+              &lt;Route key={path} exact={exact} path={path}&gt;
+                {() =&gt; &lt;Component /&gt;}
+              &lt;/Route&gt;
+            ))}
+          &lt;/Switch&gt;
+        &lt;/CSSTransition&gt;
+      &lt;/TransitionGroup&gt;
     &lt;/div&gt;
   );
 };
@@ -160,7 +160,7 @@ export default AppRouter;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 19 2021 12:32:21 GMT+0300 (GMT+03:00)
+                at Thu Aug 19 2021 16:45:27 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

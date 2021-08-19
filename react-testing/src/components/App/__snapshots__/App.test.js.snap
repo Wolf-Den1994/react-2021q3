@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
+exports[`App component matches snapshot 1`] = `
 Array [
   <header
     className="header"
@@ -11,7 +11,7 @@ Array [
           <a
             aria-current="page"
             className="active-link"
-            href="/"
+            href="/home"
             onClick={[Function]}
             style={Object {}}
           >
@@ -33,36 +33,38 @@ Array [
   <div
     className="app-wrapper"
   >
-    <div
-      className="search"
-    >
-      <form
-        action="GET"
-        className="search-form"
-        onSubmit={[Function]}
+    <div>
+      <div
+        className="search"
       >
-        <label
-          className="search-label"
-          data-testid="search"
-          htmlFor="search"
+        <form
+          action="GET"
+          className="search-form"
+          onSubmit={[Function]}
         >
-          Search
-        </label>
-        <input
-          className="search-input"
-          id="search"
-          onChange={[Function]}
-          placeholder="Search-bar"
-          title="Search-bar"
-          type="text"
-        />
-        <button
-          aria-label="search"
-          className="search-btn"
-          disabled={true}
-          type="submit"
-        />
-      </form>
+          <label
+            className="search-label"
+            data-testid="search"
+            htmlFor="search"
+          >
+            Search
+          </label>
+          <input
+            className="search-input"
+            id="search"
+            onChange={[Function]}
+            placeholder="Search-bar"
+            title="Search-bar"
+            type="text"
+          />
+          <button
+            aria-label="search"
+            className="search-btn"
+            disabled={true}
+            type="submit"
+          />
+        </form>
+      </div>
     </div>
   </div>,
 ]

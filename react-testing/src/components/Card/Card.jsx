@@ -7,7 +7,8 @@ const Card = () => {
   const q = useSelector((state) => state.searchBar.searchString);
   const data = useSelector((state) => state.home.data);
   const { articles } = data;
-  const elements = articles.map((elem) => {
+  const arr = articles || [];
+  const elements = arr.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');
     return (
       <NavLink

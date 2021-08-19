@@ -8,7 +8,7 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <NavLink exact activeClassName="active-link" to="/">
+            <NavLink exact activeClassName="active-link" to="/home">
               Home
             </NavLink>
           </li>
