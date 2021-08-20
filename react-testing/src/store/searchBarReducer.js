@@ -1,12 +1,12 @@
-const defaultState = {
+export const defaultState = {
   valueSearchBar: '',
   searchString: '',
   disabledBtnSearchBar: true,
 };
 
-const CHANGE_VALUE_SEARCHBAR = 'CHANGE_VALUE_SEARCHBAR';
-const CHANGE_SEARCH = 'CHANGE_SEARCH';
-const CHANGE_DISABLED_BTN_SEARCHBAR = 'CHANGE_DISABLED_BTN_SEARCHBAR';
+export const CHANGE_VALUE_SEARCHBAR = 'CHANGE_VALUE_SEARCHBAR';
+export const CHANGE_SEARCH = 'CHANGE_SEARCH';
+export const CHANGE_DISABLED_BTN_SEARCHBAR = 'CHANGE_DISABLED_BTN_SEARCHBAR';
 
 export const searchBarReducer = (state = defaultState, action) => {
   switch (action.type) {

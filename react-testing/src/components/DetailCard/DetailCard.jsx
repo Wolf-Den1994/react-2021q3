@@ -5,7 +5,8 @@ import './DetailCard.scss';
 const DetailCard = () => {
   const data = useSelector((state) => state.details.data);
   const { articles } = data;
-  const element = articles.map((elem) => {
+  const arr = articles || [];
+  const element = arr.map((elem) => {
     const time = elem.publishedAt.split('T').join(' ').split(':');
     return (
       <div className="detail-card" key={elem.url}>

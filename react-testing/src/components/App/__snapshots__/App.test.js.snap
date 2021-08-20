@@ -60,6 +60,7 @@ Array [
           <button
             aria-label="search"
             className="search-btn"
+            data-testid="search-btn"
             disabled={true}
             type="submit"
           />

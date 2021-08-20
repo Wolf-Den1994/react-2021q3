@@ -1,12 +1,13 @@
 import NewsServise from '../services/new-service';
 
-const defaultState = {
+export const defaultState = {
   data: {},
   loading: true,
 };
 
-const RECEIVING_DETAILS_DATA_FROM_SERVER = 'RECEIVING_DETAILS_DATA_FROM_SERVER';
-const CHANGE_LOADING_DETAILS = 'CHANGE_LOADING_DETAILS';
+export const RECEIVING_DETAILS_DATA_FROM_SERVER =
+  'RECEIVING_DETAILS_DATA_FROM_SERVER';
+export const CHANGE_LOADING_DETAILS = 'CHANGE_LOADING_DETAILS';
 
 export const detailsReducer = (state = defaultState, action) => {
   switch (action.type) {

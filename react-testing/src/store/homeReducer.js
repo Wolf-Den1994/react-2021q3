@@ -1,16 +1,16 @@
 import NewsServise from '../services/new-service';
 
-const defaultState = {
+export const defaultState = {
   data: {},
   totalResults: null,
   loading: false,
   empty: false,
 };
 
-const RECEIVING_DATA_FROM_SERVER = 'RECEIVING_DATA_FROM_SERVER';
-const CHANGE_TOTAL_RESULT = 'CHANGE_TOTAL_RESULT';
-const CHANGE_LOADING = 'CHANGE_LOADING';
-const CHANGE_EMPTY = 'CHANGE_EMPTY';
+export const RECEIVING_DATA_FROM_SERVER = 'RECEIVING_DATA_FROM_SERVER';
+export const CHANGE_TOTAL_RESULT = 'CHANGE_TOTAL_RESULT';
+export const CHANGE_LOADING = 'CHANGE_LOADING';
+export const CHANGE_EMPTY = 'CHANGE_EMPTY';
 
 export const homeReducer = (state = defaultState, action) => {
   switch (action.type) {

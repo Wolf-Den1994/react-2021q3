@@ -7,22 +7,15 @@ import {
 } from '../../store/controlReducer';
 import './Pagination.scss';
 
-const Pagination = () => {
-  const page = useSelector((state) => state.control.page);
-  const num = useSelector((state) => state.control.numberResult);
-  const total = useSelector((state) => state.home.totalResults);
-  const btn = useSelector((state) => state.control.disabledBtn);
-  const dispatch = useDispatch();
-  const maxRequestFromServer = 100;
+export const getPages = (numberPage) => {
   const optionsPage = [];
-  const maxTotal = total > maxRequestFromServer ? maxRequestFromServer : total;
-  const numberPage = Math.floor(maxTotal / num);
   for (let i = 1; i < numberPage + 1; i++) {
     optionsPage.push(<option key={i}>{i}</option>);
   }
+  return optionsPage;
+};
 
-  const dividers = [10, 5, 2, 1];
-  const optionsNumResult = [];
+export const getNumberResultPerPage = (total, maxRequestFromServer) => {
   let numberResultPerPage;
   switch (true) {
     case total > maxRequestFromServer:
@@ -38,15 +31,34 @@ const Pagination = () => {
       numberResultPerPage = 2;
       break;
   }
+  return numberResultPerPage;
+};
 
-  for (let i = 1; i < numberResultPerPage; i++) {
+const Pagination = () => {
+  const page = useSelector((state) => state.control.page);
+  const num = useSelector((state) => state.control.numberResult);
+  const total = useSelector((state) => state.home.totalResults);
+  const btn = useSelector((state) => state.control.disabledBtn);
+  const dispatch = useDispatch();
+  const maxRequestFromServer = 100;
+  const maxTotal = total > maxRequestFromServer ? maxRequestFromServer : total;
+  const numberPage = Math.floor(maxTotal / num);
+
+  const dividers = [10, 5, 2, 1];
+  const optionsNumResult = [];
+
+  for (
+    let i = 1;
+    i < getNumberResultPerPage(total, maxRequestFromServer);
+    i++
+  ) {
     optionsNumResult.push(
       <option key={i}>{maxRequestFromServer / dividers[i - 1]} / page</option>,
     );
   }
 
   const onSelectPageHandler = (event) => {
-    dispatch(changePageAction(event.target.value));
+    dispatch(changePageAction(+event.target.value));
   };
 
   const onGoPrevPage = (event) => {
@@ -139,7 +151,7 @@ const Pagination = () => {
         onChange={onSelectPageHandler}
         value={page}
       >
-        {optionsPage}
+        {getPages(numberPage)}
       </select>
       <select
         className="pagination-select result-pages"

@@ -47,6 +47,7 @@ const SearchBar = () => {
           className="search-btn"
           aria-label="search"
           type="submit"
+          data-testid="search-btn"
           disabled={disabledBtn}
         />
       </form>

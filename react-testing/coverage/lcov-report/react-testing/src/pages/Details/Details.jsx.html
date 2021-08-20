@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.67% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/15</span>
+                <span class='fraction'>14/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.33% </span>
+                <span class="strong">91.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/12</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -96,22 +96,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -127,24 +127,24 @@ import DetailCard from '../../components/DetailCard/DetailCard';
 import Spinner from '../../components/Spinner/Spinner';
 import { fetchDataForDetails } from '../../store/detailsReducer';
 &nbsp;
-const Details = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
-  const sort = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.control.sort)</span>;</span>
-  const data = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.details.data)</span>;</span>
-  const loading = <span class="cstat-no" title="statement not covered" >useSelector(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; <span class="cstat-no" title="statement not covered" >state.details.loading)</span>;</span>
-  const { search } = <span class="cstat-no" title="statement not covered" >useLocation();</span>
-  const { id } = <span class="cstat-no" title="statement not covered" >useParams();</span>
-  const { q } = <span class="cstat-no" title="statement not covered" >queryString.parse(search);</span>
+const Details = () =&gt; {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) =&gt; state.control.sort);
+  const data = useSelector((state) =&gt; state.details.data);
+  const loading = useSelector((state) =&gt; state.details.loading);
+  const { search } = useLocation();
+  const { id } = useParams();
+  const { q } = queryString.parse(search);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(fetchDataForDetails(q, sort, id));</span>
   }, []);
 &nbsp;
-  const main = <span class="cstat-no" title="statement not covered" >loading ? &lt;Spinner /&gt; : &lt;DetailCard /&gt;;</span>
+  const main = loading ? &lt;Spinner /&gt; : <span class="branch-1 cbranch-no" title="branch not covered" >&lt;DetailCard /&gt;;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="details-page"&gt;
-      {!Object.keys(data).length &amp;&amp; !loading ? &lt;&gt;&lt;/&gt; : main}
+      {!Object.keys(data).length &amp;&amp; !loading ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;&gt;&lt;/&gt; </span>: main}
     &lt;/div&gt;
   );
 };
@@ -157,7 +157,7 @@ export default Details;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 19 2021 16:45:27 GMT+0300 (GMT+03:00)
+                at Fri Aug 20 2021 17:20:19 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

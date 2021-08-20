@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/24</span>
+                <span class='fraction'>12/24</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">66.67% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">33.33% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>3/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.1% </span>
+                <span class="strong">47.62% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/21</span>
+                <span class='fraction'>10/21</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,35 +112,37 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,33 +171,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import NewsServise from '../services/new-service';
 &nbsp;
-const defaultState = {
+export const defaultState = {
   data: {},
   loading: true,
 };
 &nbsp;
-const RECEIVING_DETAILS_DATA_FROM_SERVER = 'RECEIVING_DETAILS_DATA_FROM_SERVER';
-const CHANGE_LOADING_DETAILS = 'CHANGE_LOADING_DETAILS';
+export const RECEIVING_DETAILS_DATA_FROM_SERVER =
+  'RECEIVING_DETAILS_DATA_FROM_SERVER';
+export const CHANGE_LOADING_DETAILS = 'CHANGE_LOADING_DETAILS';
 &nbsp;
 export const detailsReducer = (state = defaultState, action) =&gt; {
   switch (action.type) {
-<span class="branch-0 cbranch-no" title="branch not covered" >    case RECEIVING_DETAILS_DATA_FROM_SERVER:</span>
-<span class="cstat-no" title="statement not covered" >      return { ...state, data: action.payload };</span>
+    case RECEIVING_DETAILS_DATA_FROM_SERVER:
+      return { ...state, data: action.payload };
 &nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" >    case CHANGE_LOADING_DETAILS:</span>
-<span class="cstat-no" title="statement not covered" >      return { ...state, loading: action.payload };</span>
+    case CHANGE_LOADING_DETAILS:
+      return { ...state, loading: action.payload };
 &nbsp;
     default:
       return state;
   }
 };
 &nbsp;
-export const changeDetailsDataAction = <span class="fstat-no" title="function not covered" >(p</span>ayload) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+export const changeDetailsDataAction = (payload) =&gt; ({
   type: RECEIVING_DETAILS_DATA_FROM_SERVER,
   payload,
 });
 &nbsp;
-export const changeLoadingDetailsAction = <span class="fstat-no" title="function not covered" >(p</span>ayload) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+export const changeLoadingDetailsAction = (payload) =&gt; ({
   type: CHANGE_LOADING_DETAILS,
   payload,
 });
@@ -229,7 +232,7 @@ export function <span class="fstat-no" title="function not covered" >fetchDataFo
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Aug 19 2021 16:45:27 GMT+0300 (GMT+03:00)
+                at Fri Aug 20 2021 17:20:19 GMT+0300 (GMT+03:00)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

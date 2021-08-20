@@ -42,6 +42,7 @@ const Sort = () => {
       role="presentation"
     >
       <button
+        data-testid="relevancy"
         className={`sort-btn 0 ${activeBtn[0] ? 'active' : ''}`}
         id="relevancy"
         type="button"
@@ -49,6 +50,7 @@ const Sort = () => {
         Relevancy
       </button>
       <button
+        data-testid="popularity"
         className={`sort-btn 1 ${activeBtn[1] ? 'active' : ''}`}
         id="popularity"
         type="button"
@@ -56,6 +58,7 @@ const Sort = () => {
         Popularity
       </button>
       <button
+        data-testid="publishedAt"
         className={`sort-btn 2 ${activeBtn[2] ? 'active' : ''}`}
         id="publishedAt"
         type="button"
