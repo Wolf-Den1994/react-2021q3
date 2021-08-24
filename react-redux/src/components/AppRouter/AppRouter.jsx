@@ -1,30 +1,30 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { Route, Redirect } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { routes } from '../../router';
 
+export const LocationDisplay = () => {
+  const location = useLocation();
+
+  return <div data-testid="location-display">{location.pathname}</div>;
+};
+
 const AppRouter = () => {
+  const location = useLocation();
+
   return (
     <div className="app-wrapper">
-      {routes.map(({ path, Component }) => (
-        <Route key={path} exact path={path}>
-          {({ match }) => (
-            <CSSTransition
-              timeout={300}
-              classNames="page"
-              unmountOnExit
-              in={match != null}
-            >
-              <Component />
-            </CSSTransition>
-          )}
-        </Route>
-      ))}
-      {window.location.pathname !== '/' &&
-      window.location.pathname !== '/about' &&
-      window.location.pathname.split('/')[1] !== 'details' ? (
-        <Redirect to="/404" />
-      ) : null}
+      <TransitionGroup>
+        <CSSTransition timeout={300} classNames="page" key={location.key}>
+          <Switch location={location}>
+            {routes.map(({ path, Component, exact }) => (
+              <Route key={path} exact={exact} path={path}>
+                {() => <Component />}
+              </Route>
+            ))}
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 };
