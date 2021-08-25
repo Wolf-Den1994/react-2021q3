@@ -1,44 +1,36 @@
 const { join } = require('path');
 const webpack = require('webpack');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const esLintPlugin = (isDev) =>
   isDev ? [] : [new ESLintPlugin({ extensions: ['js', 'jsx'] })];
 
 function createConfig({ target }) {
-  let root = join(__dirname, '../'); // \react-redux\
-  let src = join(root, 'src'); // \react-redux\src
+  let root = join(__dirname, '../');
+  let src = join(root, 'src');
   let name = '[name].js';
-  // let name = '[hash:16].js';
-  // let name = '[name].[contenthash].js'; // !!!!!!
-  let dist = join(root, 'dist', target); // \react-redux\dist\client
+  let dist = join(root, 'dist', target);
 
   const IS_SERVER = target === 'server';
   const IS_CLIENT = target === 'client';
 
   return {
     name: target,
-    // entry: join(src, target),
-    // entry: join(src, 'index'),
     entry: ['babel-polyfill', join(src, target)],
-    // entry: ['babel-polyfill', join(src, 'index')],
-
-    // mode: 'development',
-    // mode: 'production',
 
     devtool: 'inline-source-map',
 
     output: {
       path: dist,
       filename: name,
-      publicPath: '/', // !!!!!
+      publicPath: '/',
       chunkFilename: name,
       assetModuleFilename: 'assets/[hash][ext]',
     },
 
     resolve: {
-      modules: ['node_modules', 'src'], /// ????????
+      modules: ['node_modules', 'src'],
       extensions: ['.js', '.jsx'],
     },
 
@@ -73,7 +65,7 @@ function createConfig({ target }) {
         IS_SERVER: JSON.stringify(IS_SERVER),
         'typeof window': JSON.stringify(IS_CLIENT ? 'object' : 'undefined'),
       }),
-      // new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+      new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
       ...esLintPlugin(null),
     ],
   };

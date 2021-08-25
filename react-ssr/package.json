@@ -4,15 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve --env development",
-    "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "lintfix": "npm run lint -- --fix",
+    "start:server": "nodemon dist/server/main.js",
     "build:all": "npm run build:client & npm run build:server",
     "build:client": "webpack --config config/webpack.client.js",
     "build:server": "webpack --config config/webpack.server.js",
-    "start:server": "nodemon dist/server/main.js",
-    "dev:server": "webpack serve --env development --config config/webpack.devserver.js",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "lintfix": "npm run lint -- --fix",
     "prettier": "prettier --write \"src/**/*.{js,jsx,scss,css,json}\""
   },
   "author": "Denis Karazan",

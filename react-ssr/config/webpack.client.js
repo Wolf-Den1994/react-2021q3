@@ -38,14 +38,11 @@ module.exports = ({ development }) => ({
 
   plugins: [
     ...config.plugins,
-    // new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
 
     new MiniCssExtractPlugin({
       filename: 'main.css',
-      // filename: '[hash:16].css',
     }),
     new HtmlWebpackPlugin({
-      // title: 'Demo webpack',
       template: './src/index.html',
     }),
     new CopyPlugin({
