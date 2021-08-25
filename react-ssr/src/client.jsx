@@ -15,19 +15,21 @@ function run(st) {
   hydrate(
     // renderApp(),
 
-    <Router>
-      <Route exact path="/">
-        <Redirect to="/home" />
-      </Route>
-      {renderApp()}
-    </Router>,
-
-    // <Provider store={st}>
+    // <Router>
     //   <Route exact path="/">
     //     <Redirect to="/home" />
     //   </Route>
-    //   <Router>{renderApp()}</Router>
-    // </Provider>,
+    //   {renderApp()}
+    // </Router>,
+
+    <Provider store={st}>
+      <Router>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        {renderApp()}
+      </Router>
+    </Provider>,
     document.getElementById('root'),
   );
 }

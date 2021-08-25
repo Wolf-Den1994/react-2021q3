@@ -6,7 +6,9 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router';
+import { Redirect, Route } from 'react-router-dom';
 import { createStore } from 'redux';
+import store from './store/store';
 
 import { renderApp } from './renderApp';
 // import { fetchDataByUrl } from './data/fetchDataByUrl';
@@ -37,16 +39,25 @@ app.get('*', async (req, res) => {
   // const content = renderToString(renderApp());
 
   /* Example with Routing */
-  const context = {};
+  // const context = {};
 
-  const content = renderToString(
-    <StaticRouter location={req.url} context={context}>
-      {renderApp()}
-    </StaticRouter>,
-  );
+  // const content = renderToString(
+  //   <StaticRouter location={req.url} context={context}>
+  //     {renderApp()}
+  //   </StaticRouter>,
+  // );
+
+  // function RedirectWithStatus({ from, to }) {
+  //   return (
+  //     <Route exact path={from}>
+  //       <Redirect to={to} />
+  //     </Route>
+  //   );
+  // }
 
   /* Example with Data */
-  // let context = {};
+  // eslint-disable-next-line
+  let context = {};
   // let data = await fetchDataByUrl(req.url);
 
   // let store = createStore(
@@ -54,14 +65,23 @@ app.get('*', async (req, res) => {
   //   data,
   // );
 
-  // const content = renderToString(
-  //   <Provider store={store}>
-  //     <StaticRouter location={req.url} context={context}>
-  //       { renderApp() }
-  //     </StaticRouter>
-  //   </Provider>
-  // );
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        {/* <RedirectWithStatus from="/" to="/home" /> */}
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        {renderApp()}
+      </StaticRouter>
+    </Provider>,
+  );
 
+  console.log(context.status, context.url);
+
+  if (context.url) {
+    res.redirect(301, context.url);
+  }
   res.send(
     renderTemplate({
       cssPath: 'main.css',
