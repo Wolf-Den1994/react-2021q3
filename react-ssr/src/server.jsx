@@ -34,16 +34,16 @@ app.get('*', async (req, res) => {
   // const content = '';
 
   /* Example with SSR */
-  const content = renderToString(renderApp());
+  // const content = renderToString(renderApp());
 
   /* Example with Routing */
-  // let context = {};
+  const context = {};
 
-  // const content = renderToString(
-  //   <StaticRouter location={req.url} context={context}>
-  //     { renderApp() }
-  //   </StaticRouter>
-  // );
+  const content = renderToString(
+    <StaticRouter location={req.url} context={context}>
+      {renderApp()}
+    </StaticRouter>,
+  );
 
   /* Example with Data */
   // let context = {};
