@@ -47,13 +47,18 @@ app.get('*', async (req, res) => {
   //   </StaticRouter>,
   // );
 
-  // function RedirectWithStatus({ from, to }) {
-  //   return (
-  //     <Route exact path={from}>
-  //       <Redirect to={to} />
-  //     </Route>
-  //   );
-  // }
+  function RedirectWithStatus({ from, to, status }) {
+    return (
+      <Route
+        exact
+        path={from}
+        render={({ staticContext }) => {
+          if (staticContext) staticContext.status = status;
+          return <Redirect from={from} to={to} />;
+        }}
+      />
+    );
+  }
 
   /* Example with Data */
   // eslint-disable-next-line
@@ -68,10 +73,10 @@ app.get('*', async (req, res) => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={context}>
-        {/* <RedirectWithStatus from="/" to="/home" /> */}
-        <Route exact path="/">
+        <RedirectWithStatus from="/" to="/home" status={301} />
+        {/* <Route exact path="/">
           <Redirect to="/home" />
-        </Route>
+        </Route> */}
         {renderApp()}
       </StaticRouter>
     </Provider>,

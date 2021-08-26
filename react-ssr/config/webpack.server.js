@@ -21,14 +21,14 @@ module.exports = ({ development }) => {
           test: /\.s[ac]ss$/i,
           use: 'null-loader',
         },
-        {
-          test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-          type: 'null-loader',
-        },
-        {
-          test: /\.(woff(2)?|eot|ttf|otf)$/i,
-          type: 'null-loader',
-        },
+        // {
+        //   test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+        //   type: 'asset/resource',
+        // },
+        // {
+        //   test: /\.(woff(2)?|eot|ttf|otf)$/i,
+        //   type: 'asset/resource',
+        // },
       ],
     },
 

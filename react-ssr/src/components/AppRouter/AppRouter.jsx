@@ -1,5 +1,4 @@
 import React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { routes } from '../../router';
 
@@ -14,17 +13,13 @@ const AppRouter = () => {
 
   return (
     <div className="app-wrapper">
-      <TransitionGroup>
-        <CSSTransition timeout={300} classNames="page" key={location.key}>
-          <Switch location={location}>
-            {routes.map(({ path, Component, exact }) => (
-              <Route key={path} exact={exact} path={path}>
-                {() => <Component />}
-              </Route>
-            ))}
-          </Switch>
-        </CSSTransition>
-      </TransitionGroup>
+      <Switch location={location}>
+        {routes.map(({ path, Component, exact }) => (
+          <Route key={path} exact={exact} path={path}>
+            {() => <Component />}
+          </Route>
+        ))}
+      </Switch>
     </div>
   );
 };
