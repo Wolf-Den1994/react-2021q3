@@ -24,9 +24,7 @@ function createConfig({ target }) {
     output: {
       path: dist,
       filename: name,
-      publicPath: '/',
       chunkFilename: name,
-      assetModuleFilename: 'client/assets/[name][ext]', // client должен быть только в пути а не папку создавать
     },
 
     resolve: {

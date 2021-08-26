@@ -1,3 +1,5 @@
+const { join } = require('path');
+
 const config = require('./webpack.common').createConfig({
   target: 'server',
 });
@@ -5,7 +7,14 @@ const config = require('./webpack.common').createConfig({
 module.exports = ({ development }) => {
   return {
     ...config,
+
     mode: development ? 'development' : 'production',
+
+    output: {
+      ...config.output,
+      publicPath: '/',
+      assetModuleFilename: 'assets/[name][ext]',
+    },
 
     module: {
       ...config.module,

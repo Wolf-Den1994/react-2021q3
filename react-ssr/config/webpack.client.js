@@ -1,3 +1,4 @@
+const { join } = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,9 +8,16 @@ const config = require('./webpack.common').createConfig({
   target: 'client',
 });
 
-module.exports = ({ development }) => ({
+module.exports = ({ development }) => {  
+  return{
   ...config,
   mode: development ? 'development' : 'production',
+
+  output: {
+    ...config.output,
+    publicPath: '/client/',
+    assetModuleFilename: 'client/assets/[name][ext]',
+  },
 
   module: {
     ...config.module,
@@ -54,4 +62,4 @@ module.exports = ({ development }) => ({
       ],
     }),
   ],
-});
+}}
