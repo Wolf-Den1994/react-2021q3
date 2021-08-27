@@ -46,7 +46,10 @@ export function fetchDataForDetails(q, sort, id) {
           dispatch(changeDetailsDataAction(obj));
         }
       })
-      .catch((e) => console.error('Error: ', e))
+      .catch((e) => {
+        // eslint-disable-next-line no-console
+        console.error('Error: ', e);
+      })
       .finally(() => {
         dispatch(changeLoadingDetailsAction(false));
       });

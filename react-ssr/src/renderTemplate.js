@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-export const renderTemplate = ({ cssPath, jsPath, content = '', data = '' }) =>
+export const renderTemplate = ({ cssPath, jsPath, content = '' }) =>
   `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -19,6 +18,5 @@ export const renderTemplate = ({ cssPath, jsPath, content = '', data = '' }) =>
 
         <script src="/client/${jsPath}"></script>
       </body>
-    </html>`;
-
-// <script type="application/json" id="data">${data.replace(/</g, '&lt;')}</script>
+    </html>
+  `;

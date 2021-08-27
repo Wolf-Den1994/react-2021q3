@@ -35,5 +35,5 @@
       "props": false
     }]
   },
-  "ignorePatterns": ["*config.js", "*common.js", "webpack.*.js"]
+  "ignorePatterns": ["*config.js", "*common.js", "webpack.*.js", "dist/**/*"]
 }

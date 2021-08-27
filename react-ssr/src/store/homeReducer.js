@@ -76,7 +76,10 @@ export const fetchDataForHome = (searchString, sort, numberResult, page) => {
           }
         }
       })
-      .catch((e) => console.error('Error: ', e));
+      .catch((e) => {
+        // eslint-disable-next-line no-console
+        console.error('Error: ', e);
+      });
   };
   return data;
 };
