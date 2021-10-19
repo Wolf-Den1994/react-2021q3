@@ -1,0 +1,14 @@
+.about-page {
+  h2 {
+    margin: 30px;
+    text-align: center;
+    overflow: hidden;
+    text-shadow: 0 0 #006eff, 0 0 #9acd32, 0 0 #ff6347;
+    color: transparent;
+    transition: all 4s;
+  }
+
+  h2:hover {
+    text-shadow: -1700px 0 #006eff, 1700px 0 #9acd32, 0 0 #ff6347;
+  }
+}
