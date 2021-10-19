@@ -1,0 +1,32 @@
+.sort-wrapper {
+  margin: 0 auto 20px;
+  width: 390px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .sort-btn {
+    border-radius: 10px;
+    width: 120px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 5px 0;
+    border: none;
+    box-shadow: 4px 7px 11px #1f5d86;
+    background-color: #c4d2e4;
+    transition: 0.2s;
+
+    &:hover {
+      box-shadow: 6px 9px 9px #194e72;
+      background-color: #e8ebf0;
+    }
+
+    &.active {
+      box-shadow: 6px 9px 9px #092a41;
+      background-color: #fafbfc;
+      cursor: default;
+    }
+  }
+}
