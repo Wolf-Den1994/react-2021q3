@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component matches snapshot 1`] = `
+<div
+  className="search"
+>
+  <form
+    action="GET"
+    className="search-form"
+    onSubmit={[Function]}
+  >
+    <label
+      className="search-label"
+      data-testid="search"
+      htmlFor="search"
+    >
+      Search
+    </label>
+    <input
+      className="search-input"
+      id="search"
+      onChange={[Function]}
+      placeholder="Search-bar"
+      title="Search-bar"
+      type="text"
+    />
+    <button
+      aria-label="search"
+      className="search-btn"
+      data-testid="search-btn"
+      disabled={true}
+      type="submit"
+    />
+  </form>
+</div>
+`;

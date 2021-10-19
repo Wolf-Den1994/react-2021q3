@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination component matches snapshot 1`] = `
+<div
+  className="pagination-wrapper"
+>
+  <button
+    className="pagination-btn left"
+    disabled={true}
+    id="btn0"
+    onClick={[Function]}
+    type="button"
+  >
+    ←
+  </button>
+  <select
+    className="pagination-select"
+    onChange={[Function]}
+    value={1}
+  />
+  <select
+    className="pagination-select result-pages"
+    onChange={[Function]}
+  >
+    <option>
+      10
+       / page
+    </option>
+  </select>
+  <button
+    className="pagination-btn right"
+    disabled={false}
+    id="btn1"
+    onClick={[Function]}
+    type="button"
+  >
+    →
+  </button>
+  <div
+    className="pagination-total"
+  >
+    <p>
+      Total number of pages 
+      0
+    </p>
+  </div>
+</div>
+`;

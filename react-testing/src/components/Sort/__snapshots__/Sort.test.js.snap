@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sort component matches snapshot 1`] = `
+<div
+  className="sort-wrapper"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="presentation"
+>
+  <button
+    className="sort-btn 0 "
+    data-testid="relevancy"
+    id="relevancy"
+    type="button"
+  >
+    Relevancy
+  </button>
+  <button
+    className="sort-btn 1 "
+    data-testid="popularity"
+    id="popularity"
+    type="button"
+  >
+    Popularity
+  </button>
+  <button
+    className="sort-btn 2 active"
+    data-testid="publishedAt"
+    id="publishedAt"
+    type="button"
+  >
+    Published at
+  </button>
+</div>
+`;
