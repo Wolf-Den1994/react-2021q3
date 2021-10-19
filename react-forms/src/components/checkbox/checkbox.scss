@@ -1,0 +1,94 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 20px;
+  cursor: pointer;
+  left: 25%;
+
+  input {
+    display: none;
+  }
+
+  .display {
+    position: absolute;
+    left: -100px;
+    top: 1px;
+    color: #444;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #a7a7a7;
+  transition: 0.4s;
+  border-radius: 20px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    height: 13px;
+    width: 13px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  &.gender:after {
+    transition: 0.5;
+    content: 'Male';
+    display: block;
+    position: absolute;
+    color: #444;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: -50%;
+    font-size: 16px;
+  }
+}
+
+input:checked + .slider {
+  background-color: #9e1da2;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #9e1da2;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider.gender:after {
+  transition: 0.5;
+  content: 'Female';
+  left: 170%;
+}
+
+.checkbox-label {
+  width: 248px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    cursor: pointer;
+  }
+
+  .display {
+    color: #444;
+
+    span {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

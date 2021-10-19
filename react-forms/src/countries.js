@@ -1,0 +1,26 @@
+const countriesArray = [
+  { country: 'Your country', id: 1 },
+  { country: 'Australia', id: 2 },
+  { country: 'Belarus', id: 3 },
+  { country: 'Brazil', id: 4 },
+  { country: 'Canada', id: 5 },
+  { country: 'China', id: 6 },
+  { country: 'France', id: 7 },
+  { country: 'Germany', id: 8 },
+  { country: 'Great Britain', id: 9 },
+  { country: 'Greenland', id: 10 },
+  { country: 'India', id: 11 },
+  { country: 'Irak', id: 12 },
+  { country: 'Iran', id: 13 },
+  { country: 'Israel', id: 14 },
+  { country: 'Italy', id: 15 },
+  { country: 'Japan', id: 16 },
+  { country: 'Korea', id: 17 },
+  { country: 'Poland', id: 18 },
+  { country: 'Russia', id: 19 },
+  { country: 'South Africa', id: 20 },
+  { country: 'UAR', id: 21 },
+  { country: 'USA', id: 22 },
+];
+
+export default countriesArray;
